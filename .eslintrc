@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "quotes": ["warn", "double"],
+    "no-var": "warn",
+    "comma-dangle": ["warn", "always"],
+    "semi": ["warn", "always"],
+    "@typescript-eslint/no-unused-vars": "off"
+  }
+}
