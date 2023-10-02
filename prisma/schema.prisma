@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Turno {
+  Matutino
+  Vespertino
+  Noturno
+  Integral
+}
+
+enum Modalidade_Ingresso {
+  Transferencia_Interna_de_Curso
+  Transferencia_Interna_de_Turno
+  Transferencia_Externa
+  Portador_de_Diploma
+}
+
+model Administrador {
+  id       String  @id @default(uuid())
+  login    String
+  senha    String
+  email    String?
+  telefone String?
+
+  PeriodoAcademico PeriodoAcademico[]
+  Prazo            Prazo[]
+
+  @@map("administradores")
+}
+
+model Prazo {
+  id               String   @id @default(uuid())
+  id_administrador String
+  inicio_do_prazo  DateTime
+  fim_do_prazo     DateTime
+
+  CoordenacaoObtemPrazo CoordenacaoObtemPrazo[]
+
+  administrador Administrador @relation(fields: [id_administrador], references: [id])
+
+  @@map("prazos")
+}
+
+model Coordenacao {
+  id       String  @id @default(uuid())
+  login    String
+  senha    String
+  email    String?
+  telefone String?
+
+  CoordenacaoObtemPrazo CoordenacaoObtemPrazo[]
+
+  @@map("coordenacoes")
+}
+
+model CoordenacaoObtemPrazo {
+  id_prazo             String
+  id_coordenacao       String
+  momento_da_concessao DateTime
+
+  prazo       Prazo       @relation(fields: [id_prazo], references: [id])
+  coordenacao Coordenacao @relation(fields: [id_coordenacao], references: [id])
+
+  @@id([id_prazo, id_coordenacao])
+  @@map("coordenacao_obtem_prazo")
+}
+
+model Curso {
+  id         String @id @default(uuid())
+  nome       String
+  campus     String
+  modalidade String
+  turno      Turno
+
+  OfertaDeVaga OfertaDeVaga[]
+
+  @@map("cursos")
+}
+
+model PeriodoAcademico {
+  id                  String              @id @default(uuid())
+  id_administrador    String
+  rotulo              String
+  modalidade_ingresso Modalidade_Ingresso
+  periodo_ativo       Boolean
+
+  OfertaDeVaga OfertaDeVaga[]
+
+  administrador Administrador @relation(fields: [id_administrador], references: [id])
+
+  @@map("periodos_academicos")
+}
+
+model OfertaDeVaga {
+  id_curso             String
+  id_periodo_academico String
+  turno_matutino       Int
+  turno_vespertino     Int
+  turno_noturno        Int
+  turno_integral       Int
+
+  curso             Curso            @relation(fields: [id_curso], references: [id])
+  periodo_academico PeriodoAcademico @relation(fields: [id_periodo_academico], references: [id])
+
+  @@id([id_curso, id_periodo_academico])
+  @@map("oferta_de_vagas")
+}
