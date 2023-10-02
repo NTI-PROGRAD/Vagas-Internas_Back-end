@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction, } from "express";
 import jwt, { UserIdJwtPayload, } from "jsonwebtoken";
 import { prismaClient, } from "../database/prismaClient";
+import { NotFoundError, UnauthorizedError, } from "../helpers/api-errors";
 
 export const checkCoordinator = async (
   request: Request,
@@ -9,7 +10,7 @@ export const checkCoordinator = async (
 ) => {
   
   const { authorization, } = request.headers;
-  if (!authorization) response.status(400).json({ message: "Unauthorized User!", });
+  if (!authorization) throw new UnauthorizedError("Token não encontrado!");
 
   const jwtSecretKey = process.env.JWT_SECRET_KEY as string;
 
@@ -17,7 +18,7 @@ export const checkCoordinator = async (
   const { userId, } = <UserIdJwtPayload>jwt.verify(token ?? "", jwtSecretKey);
   const coordinatorExists = await coordinatorUserExists(userId);
 
-  if (!coordinatorExists) response.status(400).json({ message: "Unauthorized User!", });
+  if (!coordinatorExists) throw new NotFoundError("Usuário não encontrado!");
 
   next();
 };

@@ -3,6 +3,7 @@ import type { Administrador, Coordenacao, } from "@prisma/client";
 import { compare, } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prismaClient, } from "../database/prismaClient";
+import { NotFoundError, } from "../helpers/api-errors";
 
 export class AuthController
 {
@@ -25,7 +26,7 @@ export class AuthController
       return response.json({ token, });
     }
 
-    return response.status(404).json({ message: "Usuário ou senha incorretos!", });
+    throw new NotFoundError("Usuário ou senha incorretos!");
   };
 
   private getAdministratorUser = async (login: string): Promise<Administrador | null> => {
