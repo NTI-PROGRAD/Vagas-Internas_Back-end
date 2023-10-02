@@ -19,7 +19,7 @@ enum Turno {
 
 model Administrador {
   id       String  @id @default(uuid())
-  login    String
+  login    String  @unique
   senha    String
   email    String?
   telefone String?
@@ -45,7 +45,7 @@ model Prazo {
 
 model Coordenacao {
   id       String  @id @default(uuid())
-  login    String
+  login    String  @unique
   senha    String
   email    String?
   telefone String?
