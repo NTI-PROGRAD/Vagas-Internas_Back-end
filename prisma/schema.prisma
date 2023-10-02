@@ -17,13 +17,6 @@ enum Turno {
   Integral
 }
 
-enum Modalidade_Ingresso {
-  Transferencia_Interna_de_Curso
-  Transferencia_Interna_de_Turno
-  Transferencia_Externa
-  Portador_de_Diploma
-}
-
 model Administrador {
   id       String  @id @default(uuid())
   login    String
@@ -87,11 +80,15 @@ model Curso {
 }
 
 model PeriodoAcademico {
-  id                  String              @id @default(uuid())
-  id_administrador    String
-  rotulo              String
-  modalidade_ingresso Modalidade_Ingresso
-  periodo_ativo       Boolean
+  id               String  @id @default(uuid())
+  id_administrador String
+  rotulo           String
+  periodo_ativo    Boolean
+
+  transferencia_interna_curso Boolean
+  transferencia_interna_turno Boolean
+  transferencia_externa       Boolean
+  portador_de_diploma         Boolean
 
   OfertaDeVaga OfertaDeVaga[]
 
