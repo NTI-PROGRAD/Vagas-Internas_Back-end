@@ -9,6 +9,8 @@ const auth = new AuthController();
 const term = new TermController();
 
 router.post("/login", auth.login);
+
 router.post("/prazo_de_acesso", checkAdministrator, term.create);
+router.delete("/prazo_de_acesso/:id_prazo", checkAdministrator, term.delete);
 
 export { router, };

@@ -43,4 +43,13 @@ export class TermController
       return response.status(201).json({ message: "Prazo criado com sucesso!", });
     }
   };
+
+  public delete = async (request: Request, response: Response) => {
+    const { id_prazo, } = request.params;
+
+    await prismaClient.coordenacaoObtemPrazo.deleteMany({ where: { id_prazo, }, });
+    await prismaClient.prazo.delete({ where: { id: id_prazo, }, });
+
+    return response.status(200).json({ message: "Prazo deletado com sucesso!", });
+  };
 }
