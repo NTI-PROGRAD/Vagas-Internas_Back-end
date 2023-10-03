@@ -74,4 +74,32 @@ export class TermController
 
     return response.status(200).json({ prazos, });
   };
+
+  public readAll = async (request: Request, response: Response) => {
+    const prazos = await prismaClient.coordenacaoObtemPrazo.findMany({
+      select: {
+        coordenacao: {
+          select: {
+            id: true,
+            login: true,
+          },
+        },
+        prazo: {
+          select: {
+            id: true,
+            inicio_do_prazo: true,
+            fim_do_prazo: true,
+          },
+        },
+        momento_da_concessao: true,
+      },
+      orderBy: {
+        coordenacao: {
+          login: "asc",
+        },
+      },
+    });
+
+    return response.status(200).json({ prazos, });
+  };
 }
