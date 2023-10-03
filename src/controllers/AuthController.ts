@@ -16,13 +16,13 @@ export class AuthController
 
     if (await this.validAdministratorAuthentication(senha, administratorUser))
     {
-      const token = jwt.sign({ userId: administratorUser?.id, }, jwtSecretKey, { expiresIn: 600, });
+      const token = jwt.sign({ userId: administratorUser?.id, }, jwtSecretKey, {});
       return response.json({ token, });
     }
 
     if (await this.validCoordinatorAuthentication(senha, coordinatorUser))
     {
-      const token = jwt.sign({ userId: coordinatorUser?.id, }, jwtSecretKey, { expiresIn: 600, });
+      const token = jwt.sign({ userId: coordinatorUser?.id, }, jwtSecretKey, {});
       return response.json({ token, });
     }
 
