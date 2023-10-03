@@ -10,6 +10,7 @@ const term = new TermController();
 
 router.post("/login", auth.login);
 
+router.get("/prazo_de_acesso/:id_coordenacao", term.read);
 router.post("/prazo_de_acesso", checkAdministrator, term.create);
 router.delete("/prazo_de_acesso/:id_prazo", checkAdministrator, term.delete);
 
