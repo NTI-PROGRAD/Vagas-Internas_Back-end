@@ -18,6 +18,7 @@ router.post("/prazo_de_acesso", checkAdministrator, term.create);
 router.delete("/prazo_de_acesso/:id_prazo", checkAdministrator, term.delete);
 
 router.get("/coordenacao/:id_coordenacao", coordinationController.read);
+router.get("/coordenacao/", checkAdministrator, coordinationController.readAll);
 router.put("/coordenacao/:id_coordenacao", coordinationController.update);
 
 export { router, };

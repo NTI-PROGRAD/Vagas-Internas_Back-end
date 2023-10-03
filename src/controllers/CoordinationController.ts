@@ -22,6 +22,16 @@ export class CoordinationController
     return response.status(200).json({ coordinationUser, });
   };
 
+  public readAll = async (request: Request, response: Response) => {
+    const coordinations = await prismaClient.coordenacao.findMany({
+      orderBy: {
+        login: "asc",
+      },
+    });
+
+    return response.status(200).json({ coordinations, });
+  };
+
   public update = async (request: IUpdateCoordinationRequest, response: Response) => {
     const { id_coordenacao, } = request.params;
     const { email, telefone, } = request.body;
