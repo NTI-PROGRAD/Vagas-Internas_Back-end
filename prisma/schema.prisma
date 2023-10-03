@@ -82,7 +82,7 @@ model Curso {
 model PeriodoAcademico {
   id               String  @id @default(uuid())
   id_administrador String
-  rotulo           String
+  rotulo           String  @unique
   periodo_ativo    Boolean
 
   transferencia_interna_curso Boolean
