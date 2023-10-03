@@ -1,21 +1,7 @@
-import { Request, Response, } from "express";
+import { Response, } from "express";
 import { prismaClient, } from "../database/prismaClient";
 import { UnauthorizedError, } from "../helpers/api-errors";
-
-interface ICreateAcademicPeriodBodyRequest
-{
-  rotulo: string;
-  periodoAtivo: boolean;
-  portadorDeDiploma: boolean;
-  transferenciaExterna: boolean;
-  transferenciaInternaCurso: boolean;
-  transferenciaInternaTurno: boolean;
-}
-
-interface ICreateAcademicPeriodRequest extends Request
-{
-  body: ICreateAcademicPeriodBodyRequest;
-}
+import { ICreateAcademicPeriodRequest, } from "../interfaces/ICreateAcademicPeriodRequest";
 
 export class AcademicPeriodController
 {

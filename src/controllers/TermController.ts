@@ -1,17 +1,6 @@
 import { Request, Response, } from "express";
 import { prismaClient, } from "../database/prismaClient";
-
-interface ICreateTermBodyRequest
-{
-  inicioDoPrazo: string;
-  fimDoPrazo: string;
-  idCoordenacoes: Array<string>;
-}
-
-interface ICreateTermRequest extends Request
-{
-  body: ICreateTermBodyRequest;
-}
+import { ICreateTermRequest, } from "../interfaces/ICreateTermRequest";
 
 export class TermController
 {

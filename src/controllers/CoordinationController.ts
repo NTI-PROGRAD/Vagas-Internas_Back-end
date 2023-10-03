@@ -1,16 +1,6 @@
 import { Request, Response, } from "express";
 import { prismaClient, } from "../database/prismaClient";
-
-interface IUpdateCoordinationBodyRequest
-{
-  email?: string;
-  telefone?: string;
-}
-
-interface IUpdateCoordinationRequest extends Request
-{
-  body: IUpdateCoordinationBodyRequest;
-}
+import { IUpdateCoordinationRequest, } from "../interfaces/IUpdateCoordinator";
 
 export class CoordinationController
 {
