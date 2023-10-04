@@ -2,12 +2,12 @@ import { Request, } from "express";
 
 interface ICreateAcademicPeriodBodyRequest
 {
-  rotulo: string;
-  periodoAtivo: boolean;
-  portadorDeDiploma: boolean;
-  transferenciaExterna: boolean;
-  transferenciaInternaCurso: boolean;
-  transferenciaInternaTurno: boolean;
+  label: string;
+  activePeriod: boolean;
+  diplomaBearer: boolean;
+  externalTransfer: boolean;
+  internalCourseTransfer: boolean;
+  internalClassTimeTransfer: boolean;
 }
 
 export interface ICreateAcademicPeriodRequest extends Request

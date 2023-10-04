@@ -2,9 +2,9 @@ import { Request, } from "express";
 
 interface ICreateTermBodyRequest
 {
-  inicioDoPrazo: string;
-  fimDoPrazo: string;
-  idCoordenacoes: Array<string>;
+  startTime: string;
+  endTime: string;
+  idCoursesAccounts: Array<string>;
 }
 
 export interface ICreateTermRequest extends Request

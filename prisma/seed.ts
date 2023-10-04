@@ -5,75 +5,75 @@ const prisma = new PrismaClient();
 
 async function main()
 {
-  await prisma.periodoAcademico.deleteMany({});
-  await prisma.administrador.deleteMany({});
-  await prisma.coordenacao.deleteMany({});
+  await prisma.academicPeriod.deleteMany({});
+  await prisma.administratorAccount.deleteMany({});
+  await prisma.courseAccount.deleteMany({});
 
-  const administrator1 = await prisma.administrador.create({
+  const administratorAccount1 = await prisma.administratorAccount.create({
     data: {
       login: "emily",
-      senha: await bcrypt.hash("12345", 10),
+      password: await bcrypt.hash("12345", 10),
       email: "emily.pires@ufpe.br",
     },
   });
 
-  const administrator2 = await prisma.administrador.create({
+  const administratorAccount2 = await prisma.administratorAccount.create({
     data: {
       login: "rafael",
-      senha: await bcrypt.hash("12345", 10),
+      password: await bcrypt.hash("12345", 10),
       email: "rafael.anthony@ufpe.br",
     },
   });
 
-  const administrator3 = await prisma.administrador.create({
+  const administratorAccount3 = await prisma.administratorAccount.create({
     data: {
       login: "cecilia",
-      senha: await bcrypt.hash("12345", 10),
+      password: await bcrypt.hash("12345", 10),
       email: "cecilia.drumond@ufpe.br",
     },
   });
 
-  const administrator4 = await prisma.administrador.create({
+  const administratorAccount4 = await prisma.administratorAccount.create({
     data: {
       login: "francisco",
-      senha: await bcrypt.hash("12345", 10),
+      password: await bcrypt.hash("12345", 10),
       email: "francisco.barros@ufpe.br",
     },
   });
 
-  const administrator5 = await prisma.administrador.create({
+  const administratorAccount5 = await prisma.administratorAccount.create({
     data: {
       login: "leonardo",
-      senha: await bcrypt.hash("12345", 10),
+      password: await bcrypt.hash("12345", 10),
       email: "leonardo.fogaca@ufpe.br",
     },
   });
 
-  const coordinator1 = await prisma.coordenacao.create({
+  const courseAccount1 = await prisma.courseAccount.create({
     data: {
       login: "coordenacao_letras",
-      senha: await bcrypt.hash("12345", 10),
+      password: await bcrypt.hash("12345", 10),
       email: "coord_letras@ufpe.br",
     },
   });
   
-  const coordinator2 = await prisma.coordenacao.create({
+  const courseAccount2 = await prisma.courseAccount.create({
     data: {
       login: "coordenacao_arquitetura_urbanismo",
-      senha: await bcrypt.hash("12345", 10),
+      password: await bcrypt.hash("12345", 10),
       email: "coord_arquiteturaurbanismo@ufpe.br",
     },
   });
 
-  const periodoAcademico = await prisma.periodoAcademico.create({
+  const periodoAcademico = await prisma.academicPeriod.create({
     data: {
-      id_administrador: administrator1.id,
-      rotulo: "2023.2",
-      periodo_ativo: true,
-      portador_de_diploma: true,
-      transferencia_externa: false,
-      transferencia_interna_turno: true,
-      transferencia_interna_curso: true,
+      idAdministratorAccount: administratorAccount1.id,
+      label: "2023.2",
+      activePeriod: true,
+      diplomaBearer: true,
+      externalTransfer: false,
+      internalClassTimeTransfer: true,
+      internalCourseTransfer: true,
     },
   });
 }

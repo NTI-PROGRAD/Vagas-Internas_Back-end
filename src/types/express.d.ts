@@ -1,9 +1,9 @@
-import { Administrador, } from "@prisma/client";
+import { AdministratorAccount, } from "@prisma/client";
 
 declare global {
   namespace Express {
     export interface Request {
-      user: Partial<Omit<Administrador, "senha">>
+      user: Partial<Omit<AdministratorAccount, "password">>
     }
   }
 }

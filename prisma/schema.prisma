@@ -17,7 +17,7 @@ enum ClassesTime {
   Integral
 }
 
-model AdministratorsAccounts {
+model AdministratorAccount {
   id           String  @id @default(uuid())
   login        String  @unique
   password     String
@@ -25,49 +25,49 @@ model AdministratorsAccounts {
   phoneContact String?
 
   academicPeriods AcademicPeriod[]
-  grantedTimes    GrantedTimes[]
+  grantedTimes    GrantedTime[]
 
   @@map("administrators_accounts")
 }
 
-model GrantedTimes {
+model GrantedTime {
   id                     String   @id @default(uuid())
   idAdministratorAccount String
   startTime              DateTime
   endTime                DateTime
 
-  coursesAccountsGetGrantedTimes CoursesAccountsGetGrantedTimes[]
+  coursesAccountsGetGrantedTimes CourseAccountGetGrantedTime[]
 
-  administrador AdministratorsAccounts @relation(fields: [idAdministratorAccount], references: [id])
+  administrador AdministratorAccount @relation(fields: [idAdministratorAccount], references: [id])
 
   @@map("granted_times")
 }
 
-model CoursesAccounts {
+model CourseAccount {
   id           String  @id @default(uuid())
   login        String  @unique
   password     String
   email        String?
   phoneContact String?
 
-  coursesAccountsGetGrantedTimes CoursesAccountsGetGrantedTimes[]
+  coursesAccountsGetGrantedTimes CourseAccountGetGrantedTime[]
 
   @@map("courses_accounts")
 }
 
-model CoursesAccountsGetGrantedTimes {
-  idGrantedTime        String
-  idCourseAccount      String
-  momento_da_concessao DateTime
+model CourseAccountGetGrantedTime {
+  idGrantedTime   String
+  idCourseAccount String
+  grantDatetime   DateTime
 
-  granted_time   GrantedTimes    @relation(fields: [idGrantedTime], references: [id])
-  course_account CoursesAccounts @relation(fields: [idCourseAccount], references: [id])
+  grantedTime   GrantedTime   @relation(fields: [idGrantedTime], references: [id])
+  courseAccount CourseAccount @relation(fields: [idCourseAccount], references: [id])
 
   @@id([idGrantedTime, idCourseAccount])
   @@map("courses_accounts_get_granted_times")
 }
 
-model Courses {
+model Course {
   id             String      @id @default(uuid())
   name           String
   campus         String
@@ -87,8 +87,8 @@ model PlacesOffer {
   nightClasses     Int
   fullTimeClasses  Int
 
-  course            Courses        @relation(fields: [idCourse], references: [id])
-  periodo_academico AcademicPeriod @relation(fields: [idAcademicPeriod], references: [id])
+  course         Course         @relation(fields: [idCourse], references: [id])
+  academicPeriod AcademicPeriod @relation(fields: [idAcademicPeriod], references: [id])
 
   @@id([idCourse, idAcademicPeriod])
   @@map("place_offers")
@@ -107,7 +107,7 @@ model AcademicPeriod {
 
   placesOffer PlacesOffer[]
 
-  administratorAccount AdministratorsAccounts @relation(fields: [idAdministratorAccount], references: [id])
+  administratorAccount AdministratorAccount @relation(fields: [idAdministratorAccount], references: [id])
 
   @@map("academic_periods")
 }

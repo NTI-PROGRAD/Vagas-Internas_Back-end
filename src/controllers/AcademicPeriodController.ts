@@ -6,27 +6,27 @@ import { ICreateAcademicPeriodRequest, } from "../interfaces/ICreateAcademicPeri
 export class AcademicPeriodController
 {
   public create = async (request: ICreateAcademicPeriodRequest, response: Response) => {
-    const { id: idAdministrador, } = request.user;
+    const { id: idAdministratorAccount, } = request.user;
     const {
-      rotulo,
-      periodoAtivo,
-      portadorDeDiploma,
-      transferenciaExterna,
-      transferenciaInternaCurso,
-      transferenciaInternaTurno,
+      label,
+      activePeriod,
+      diplomaBearer,
+      externalTransfer,
+      internalCourseTransfer,
+      internalClassTimeTransfer,
     } = request.body;
 
-    if (idAdministrador)
+    if (idAdministratorAccount)
     {
-      const academicPeriod = await prismaClient.periodoAcademico.create({
+      const academicPeriod = await prismaClient.academicPeriod.create({
         data: {
-          id_administrador: idAdministrador,
-          rotulo: rotulo,
-          periodo_ativo: periodoAtivo,
-          portador_de_diploma: portadorDeDiploma,
-          transferencia_externa: transferenciaExterna,
-          transferencia_interna_curso: transferenciaInternaCurso,
-          transferencia_interna_turno: transferenciaInternaTurno,
+          idAdministratorAccount,
+          label,
+          activePeriod,
+          diplomaBearer,
+          externalTransfer,
+          internalCourseTransfer,
+          internalClassTimeTransfer,
         },
       });
 
