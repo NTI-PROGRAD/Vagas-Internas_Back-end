@@ -1,13 +1,14 @@
-import { Request, Response, } from "express";
+import { Response, } from "express";
 import type { AdministratorAccount, CourseAccount, } from "@prisma/client";
 import { compare, } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prismaClient, } from "../database/prismaClient";
 import { NotFoundError, } from "../helpers/api-errors";
+import { IAuthLoginRequest, } from "../interfaces/IAuthLoginRequest";
 
 export class AuthController
 {
-  public login = async (request: Request, response: Response) => {
+  public login = async (request: IAuthLoginRequest, response: Response) => {
     const { login, password, } = request.body;
     const jwtSecretKey = process.env.JWT_SECRET_KEY as string;
 
