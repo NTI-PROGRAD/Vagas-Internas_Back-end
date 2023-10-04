@@ -7,26 +7,30 @@ export class CourseAccountController
   public read = async (request: Request, response: Response) => {
     const { id_coordenacao, } = request.params;
 
-    const coordinationUser = await prismaClient.courseAccount.findFirst({ where: { id: id_coordenacao, }, });
+    const courseAccount = await prismaClient.courseAccount.findFirst({
+      where: { id: id_coordenacao, },
+      select: {
+        id: true,
+        login: true,
+        email: true,
+        phoneContact: true,       
+      },
+    });
 
-    return response.status(200).json({ coordinationUser, });
+    return response.status(200).json({ courseAccount, });
   };
 
   public update = async (request: IUpdateCoordinationRequest, response: Response) => {
     const { idCourseAccount, } = request.params;
     const { email, phoneContact, } = request.body;
 
-    let coordinationUser;
+    let courseAccount;
 
     if (email !== null)
     {
-      coordinationUser = await prismaClient.courseAccount.update({
-        where: {
-          id: idCourseAccount,
-        },
-        data: {
-          email,
-        },
+      courseAccount = await prismaClient.courseAccount.update({
+        where: { id: idCourseAccount, },
+        data: { email, },
         select: {
           id: true,
           login: true,
@@ -38,13 +42,9 @@ export class CourseAccountController
 
     if (phoneContact !== null)
     {
-      coordinationUser = await prismaClient.courseAccount.update({
-        where: {
-          id: idCourseAccount,
-        },
-        data: {
-          phoneContact,
-        },
+      courseAccount = await prismaClient.courseAccount.update({
+        where: { id: idCourseAccount, },
+        data: { phoneContact, },
         select: {
           id: true,
           login: true,
@@ -54,16 +54,20 @@ export class CourseAccountController
       });
     }
 
-    return response.status(200).json({ coordinationUser, });
+    return response.status(200).json({ courseAccount, });
   };
 
   public readAll = async (request: Request, response: Response) => {
-    const coordinations = await prismaClient.courseAccount.findMany({
-      orderBy: {
-        login: "asc",
+    const coursesAccounts = await prismaClient.courseAccount.findMany({
+      select: {
+        id: true,
+        login: true,
+        email: true,
+        phoneContact: true,
       },
+      orderBy: { login: "asc", },
     });
 
-    return response.status(200).json({ coordinations, });
+    return response.status(200).json({ coursesAccounts, });
   };
 }
