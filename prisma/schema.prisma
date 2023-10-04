@@ -10,104 +10,104 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Turno {
+enum ClassesTime {
   Matutino
   Vespertino
   Noturno
   Integral
 }
 
-model Administrador {
-  id       String  @id @default(uuid())
-  login    String  @unique
-  senha    String
-  email    String?
-  telefone String?
+model AdministratorsAccounts {
+  id           String  @id @default(uuid())
+  login        String  @unique
+  password     String
+  email        String?
+  phoneContact String?
 
-  PeriodoAcademico PeriodoAcademico[]
-  Prazo            Prazo[]
+  academicPeriods AcademicPeriod[]
+  grantedTimes    GrantedTimes[]
 
-  @@map("administradores")
+  @@map("administrators_accounts")
 }
 
-model Prazo {
-  id               String   @id @default(uuid())
-  id_administrador String
-  inicio_do_prazo  DateTime
-  fim_do_prazo     DateTime
+model GrantedTimes {
+  id                     String   @id @default(uuid())
+  idAdministratorAccount String
+  startTime              DateTime
+  endTime                DateTime
 
-  CoordenacaoObtemPrazo CoordenacaoObtemPrazo[]
+  coursesAccountsGetGrantedTimes CoursesAccountsGetGrantedTimes[]
 
-  administrador Administrador @relation(fields: [id_administrador], references: [id])
+  administrador AdministratorsAccounts @relation(fields: [idAdministratorAccount], references: [id])
 
-  @@map("prazos")
+  @@map("granted_times")
 }
 
-model Coordenacao {
-  id       String  @id @default(uuid())
-  login    String  @unique
-  senha    String
-  email    String?
-  telefone String?
+model CoursesAccounts {
+  id           String  @id @default(uuid())
+  login        String  @unique
+  password     String
+  email        String?
+  phoneContact String?
 
-  CoordenacaoObtemPrazo CoordenacaoObtemPrazo[]
+  coursesAccountsGetGrantedTimes CoursesAccountsGetGrantedTimes[]
 
-  @@map("coordenacoes")
+  @@map("courses_accounts")
 }
 
-model CoordenacaoObtemPrazo {
-  id_prazo             String
-  id_coordenacao       String
+model CoursesAccountsGetGrantedTimes {
+  idGrantedTime        String
+  idCourseAccount      String
   momento_da_concessao DateTime
 
-  prazo       Prazo       @relation(fields: [id_prazo], references: [id])
-  coordenacao Coordenacao @relation(fields: [id_coordenacao], references: [id])
+  granted_time   GrantedTimes    @relation(fields: [idGrantedTime], references: [id])
+  course_account CoursesAccounts @relation(fields: [idCourseAccount], references: [id])
 
-  @@id([id_prazo, id_coordenacao])
-  @@map("coordenacao_obtem_prazo")
+  @@id([idGrantedTime, idCourseAccount])
+  @@map("courses_accounts_get_granted_times")
 }
 
-model Curso {
-  id         String @id @default(uuid())
-  nome       String
-  campus     String
-  modalidade String
-  turno      Turno
+model Courses {
+  id             String      @id @default(uuid())
+  name           String
+  campus         String
+  academicDegree String
+  classesTime    ClassesTime
 
-  OfertaDeVaga OfertaDeVaga[]
+  placesOffer PlacesOffer[]
 
-  @@map("cursos")
+  @@map("courses")
 }
 
-model PeriodoAcademico {
-  id               String  @id @default(uuid())
-  id_administrador String
-  rotulo           String  @unique
-  periodo_ativo    Boolean
+model PlacesOffer {
+  idCourse         String
+  idAcademicPeriod String
+  morningClasses   Int
+  afternoonClasses Int
+  nightClasses     Int
+  fullTimeClasses  Int
 
-  transferencia_interna_curso Boolean
-  transferencia_interna_turno Boolean
-  transferencia_externa       Boolean
-  portador_de_diploma         Boolean
+  course            Courses        @relation(fields: [idCourse], references: [id])
+  periodo_academico AcademicPeriod @relation(fields: [idAcademicPeriod], references: [id])
 
-  OfertaDeVaga OfertaDeVaga[]
-
-  administrador Administrador @relation(fields: [id_administrador], references: [id])
-
-  @@map("periodos_academicos")
+  @@id([idCourse, idAcademicPeriod])
+  @@map("place_offers")
 }
 
-model OfertaDeVaga {
-  id_curso             String
-  id_periodo_academico String
-  turno_matutino       Int
-  turno_vespertino     Int
-  turno_noturno        Int
-  turno_integral       Int
+model AcademicPeriod {
+  id                     String  @id @default(uuid())
+  idAdministratorAccount String
+  label                  String  @unique
+  activePeriod           Boolean
 
-  curso             Curso            @relation(fields: [id_curso], references: [id])
-  periodo_academico PeriodoAcademico @relation(fields: [id_periodo_academico], references: [id])
+  internalCourseTransfer    Boolean
+  internalClassTimeTransfer Boolean
+  externalTransfer          Boolean
+  diplomaBearer             Boolean
 
-  @@id([id_curso, id_periodo_academico])
-  @@map("oferta_de_vagas")
+  placesOffer PlacesOffer[]
+
+  administratorAccount AdministratorsAccounts @relation(fields: [idAdministratorAccount], references: [id])
+
+  @@map("academic_periods")
 }
