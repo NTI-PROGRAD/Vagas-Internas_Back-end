@@ -16,7 +16,6 @@ export class AcademicPeriodController
     const { id: idAdministratorAccount, } = request.user;
     const {
       label,
-      activePeriod,
       diplomaBearer,
       externalTransfer,
       internalCourseTransfer,
@@ -29,7 +28,7 @@ export class AcademicPeriodController
         data: {
           idAdministratorAccount,
           label,
-          activePeriod,
+          activePeriod: false,
           diplomaBearer,
           externalTransfer,
           internalCourseTransfer,
@@ -37,7 +36,7 @@ export class AcademicPeriodController
         },
       });
 
-      return response.status(201).json({ message: "Período acadêmico criado com sucesso!", });
+      return response.status(201).json({ message: `Período acadêmico ${academicPeriod.label} criado com sucesso!`, });
     }
 
     throw new UnauthorizedError("Erro ao cadastrar novo período acadêmico, usuário não autorizado!");

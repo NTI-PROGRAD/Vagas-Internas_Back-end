@@ -3,7 +3,6 @@ import { Request, } from "express";
 interface ICreateAcademicPeriodBodyRequest
 {
   label: string;
-  activePeriod: boolean;
   diplomaBearer: boolean;
   externalTransfer: boolean;
   internalCourseTransfer: boolean;
