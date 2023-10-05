@@ -6,10 +6,11 @@ export class GrantedTimeController
 {
   constructor()
   {
-    this.create  = this.create.bind(this);
-    this.read    = this.read.bind(this);
-    this.delete  = this.delete.bind(this);
+    this.create = this.create.bind(this);
+    this.read = this.read.bind(this);
+    this.delete = this.delete.bind(this);
     this.readAll = this.readAll.bind(this);
+    this.readGrantedTimesByCourseAccount = this.readGrantedTimesByCourseAccount.bind(this);
   }
 
   public async create(request: ICreateTermRequest, response: Response)
@@ -42,29 +43,6 @@ export class GrantedTimeController
     }
   }
 
-  public async read(request: Request, response: Response)
-  {
-    const { idCourseAccount, } = request.params;
-
-    const grantedTimes = await prismaClient.courseAccountGetGrantedTime.findMany({
-      where: {
-        idCourseAccount,
-      },
-      select: {
-        idGrantedTime: true,
-        grantDatetime: true,
-        grantedTime: {
-          select: {
-            startTime: true,
-            endTime: true,
-          },
-        },
-      },
-    });
-
-    return response.status(200).json({ grantedTimes, });
-  }
-
   public async delete(request: Request, response: Response)
   {
     const { idGrantedTime, } = request.params;
@@ -73,6 +51,17 @@ export class GrantedTimeController
     await prismaClient.grantedTime.delete({ where: { id: idGrantedTime, }, });
 
     return response.status(200).json({ message: "Prazo deletado com sucesso!", });
+  }
+
+  public async read(request: Request, response: Response)
+  {
+    const { idGrantedTime, } = request.params;
+
+    const grantedTime = await prismaClient.grantedTime.findFirst({
+      where: { id: idGrantedTime, },
+    });
+
+    return response.status(200).json({ grantedTime, });
   }
 
   public async readAll(request: Request, response: Response)
@@ -105,5 +94,28 @@ export class GrantedTimeController
     }));
 
     return response.status(200).json({ grantedTimesResponse, });
+  }
+
+  public async readGrantedTimesByCourseAccount(request: Request, response: Response)
+  {
+    const { idCourseAccount, } = request.params;
+
+    const grantedTimes = await prismaClient.courseAccountGetGrantedTime.findMany({
+      where: {
+        idCourseAccount,
+      },
+      select: {
+        idGrantedTime: true,
+        grantDatetime: true,
+        grantedTime: {
+          select: {
+            startTime: true,
+            endTime: true,
+          },
+        },
+      },
+    });
+
+    return response.status(200).json({ grantedTimes, });
   }
 }
