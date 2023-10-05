@@ -8,6 +8,7 @@ export class AcademicPeriodController
   constructor()
   {
     this.create = this.create.bind(this);
+    this.readAll = this.readAll.bind(this);
     this.setActiveAcademicPeriod = this.setActiveAcademicPeriod.bind(this);
   }
 
@@ -42,12 +43,17 @@ export class AcademicPeriodController
     throw new UnauthorizedError("Erro ao cadastrar novo período acadêmico, usuário não autorizado!");
   }
 
+  public async readAll(request: Request, response: Response)
+  {
+    const academicPeriods = await prismaClient.academicPeriod.findMany({});
+    return response.status(200).json({ academicPeriods, });
+  }
+
   public async setActiveAcademicPeriod(request: Request, response: Response)
   {
     const { idAcademicPeriod, } = request.params;
 
     await prismaClient.academicPeriod.updateMany({
-      where: {  },
       data: { activePeriod: false, },
     });
 

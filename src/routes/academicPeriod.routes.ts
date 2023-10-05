@@ -7,5 +7,6 @@ const academicPeriodRoutes     = Router();
 
 academicPeriodRoutes.post("/", checkAdministrator, academicPeriodController.create);
 academicPeriodRoutes.post("/:idAcademicPeriod", checkAdministrator, academicPeriodController.setActiveAcademicPeriod);
+academicPeriodRoutes.get("/", checkAdministrator, academicPeriodController.readAll);
 
 export { academicPeriodRoutes, };
