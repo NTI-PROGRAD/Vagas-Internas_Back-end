@@ -77,30 +77,33 @@ export class GrantedTimeController
 
   public async readAll(request: Request, response: Response)
   {
-    const grantedTimes = await prismaClient.courseAccountGetGrantedTime.findMany({
+    const grantedTimes = await prismaClient.grantedTime.findMany({
       select: {
-        courseAccount: {
+        id: true,
+        idAdministratorAccount: true,
+        startTime: true,
+        endTime: true,
+        coursesAccountsGetGrantedTimes: {
           select: {
-            id: true,
-            login: true,
+            courseAccount: {
+              select: {
+                id: true,
+                login: true,
+              },
+            },
           },
-        },
-        grantedTime: {
-          select: {
-            id: true,
-            startTime: true,
-            endTime: true,
-          },
-        },
-        grantDatetime: true,
-      },
-      orderBy: {
-        courseAccount: {
-          login: "asc",
         },
       },
     });
 
-    return response.status(200).json({ grantedTimes, });
+    const grantedTimesResponse = grantedTimes.map((response) => ({
+      id: response.id,
+      idAdministratorAccount: response.idAdministratorAccount,
+      startTime: response.startTime,
+      endTime: response.endTime,
+      idTargetCourseAccounts: response.coursesAccountsGetGrantedTimes.map((item) => item.courseAccount.id),
+    }));
+
+    return response.status(200).json({ grantedTimesResponse, });
   }
 }
