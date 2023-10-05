@@ -5,7 +5,13 @@ import { ICreateAcademicPeriodRequest, } from "../interfaces/ICreateAcademicPeri
 
 export class AcademicPeriodController
 {
-  public create = async (request: ICreateAcademicPeriodRequest, response: Response) => {
+  constructor()
+  {
+    this.create = this.create.bind(this);
+  }
+
+  public async create(request: ICreateAcademicPeriodRequest, response: Response)
+  {
     const { id: idAdministratorAccount, } = request.user;
     const {
       label,
@@ -34,5 +40,5 @@ export class AcademicPeriodController
     }
 
     throw new UnauthorizedError("Erro ao cadastrar novo período acadêmico, usuário não autorizado!");
-  };
+  }
 }
