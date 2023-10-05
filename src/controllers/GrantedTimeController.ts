@@ -4,7 +4,16 @@ import { ICreateTermRequest, } from "../interfaces/ICreateTermRequest";
 
 export class GrantedTimeController
 {
-  public create = async (request: ICreateTermRequest, response: Response) => {
+  constructor()
+  {
+    this.create  = this.create.bind(this);
+    this.read    = this.read.bind(this);
+    this.delete  = this.delete.bind(this);
+    this.readAll = this.readAll.bind(this);
+  }
+
+  public async create(request: ICreateTermRequest, response: Response)
+  {
     const { id: idAdministratorAccount, } = request.user;
     const { startTime, endTime, idCoursesAccounts, } = request.body;
 
@@ -31,9 +40,10 @@ export class GrantedTimeController
 
       return response.status(201).json({ message: "Prazo criado com sucesso!", });
     }
-  };
+  }
 
-  public read = async (request: Request, response: Response) => {
+  public async read(request: Request, response: Response)
+  {
     const { idCourseAccount, } = request.params;
 
     const grantedTimes = await prismaClient.courseAccountGetGrantedTime.findMany({
@@ -53,18 +63,20 @@ export class GrantedTimeController
     });
 
     return response.status(200).json({ grantedTimes, });
-  };
+  }
 
-  public delete = async (request: Request, response: Response) => {
+  public async delete(request: Request, response: Response)
+  {
     const { idGrantedTime, } = request.params;
 
     await prismaClient.courseAccountGetGrantedTime.deleteMany({ where: { idGrantedTime, }, });
     await prismaClient.grantedTime.delete({ where: { id: idGrantedTime, }, });
 
     return response.status(200).json({ message: "Prazo deletado com sucesso!", });
-  };
+  }
 
-  public readAll = async (request: Request, response: Response) => {
+  public async readAll(request: Request, response: Response)
+  {
     const grantedTimes = await prismaClient.courseAccountGetGrantedTime.findMany({
       select: {
         courseAccount: {
@@ -90,5 +102,5 @@ export class GrantedTimeController
     });
 
     return response.status(200).json({ grantedTimes, });
-  };
+  }
 }
