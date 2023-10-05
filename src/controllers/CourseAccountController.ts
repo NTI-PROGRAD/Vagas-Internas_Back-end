@@ -4,7 +4,15 @@ import { IUpdateCoordinationRequest, } from "../interfaces/IUpdateCoordinator";
 
 export class CourseAccountController
 {
-  public read = async (request: Request, response: Response) => {
+  constructor()
+  {
+    this.read = this.read.bind(this);
+    this.update = this.update.bind(this);
+    this.readAll = this.readAll.bind(this);
+  }
+
+  public async read(request: Request, response: Response)
+  {
     const { id_coordenacao, } = request.params;
 
     const courseAccount = await prismaClient.courseAccount.findFirst({
@@ -18,9 +26,10 @@ export class CourseAccountController
     });
 
     return response.status(200).json({ courseAccount, });
-  };
+  }
 
-  public update = async (request: IUpdateCoordinationRequest, response: Response) => {
+  public async update(request: IUpdateCoordinationRequest, response: Response)
+  {
     const { idCourseAccount, } = request.params;
     const { email, phoneContact, } = request.body;
 
@@ -55,9 +64,10 @@ export class CourseAccountController
     }
 
     return response.status(200).json({ courseAccount, });
-  };
+  }
 
-  public readAll = async (request: Request, response: Response) => {
+  public async readAll(request: Request, response: Response)
+  {
     const coursesAccounts = await prismaClient.courseAccount.findMany({
       select: {
         id: true,
@@ -69,5 +79,5 @@ export class CourseAccountController
     });
 
     return response.status(200).json({ coursesAccounts, });
-  };
+  }
 }
