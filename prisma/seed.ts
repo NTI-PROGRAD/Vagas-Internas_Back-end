@@ -104,7 +104,7 @@ async function main()
       login: "administracao_bacharelado_recife",
       password: await bcrypt.hash("12345", 10),
       email: "coord.administracao@ufpe.br",
-
+      idCourse: course1.id,
     },
   });
   
@@ -113,6 +113,7 @@ async function main()
       login: "arqueologia_bacharelado_recife",
       password: await bcrypt.hash("12345", 10),
       email: "coord.arqueologia@ufpe.br",
+      idCourse: course2.id,
     },
   });
   
@@ -121,6 +122,7 @@ async function main()
       login: "arquitetura_e_urbanismo_bacharelado_recife",
       password: await bcrypt.hash("12345", 10),
       email: "coord.arquiteturaurbanismo@ufpe.br",
+      idCourse: course3.id,
     },
   });
 
@@ -129,6 +131,7 @@ async function main()
       login: "artes_visuais_bacharelado_recife",
       password: await bcrypt.hash("12345", 10),
       email: "coord.artesvisuais@ufpe.br",
+      idCourse: course4.id,
     },
   });
 
@@ -137,6 +140,7 @@ async function main()
       login: "artes_visuais_licenciatura_recife",
       password: await bcrypt.hash("12345", 10),
       email: "coord.artesvisuais@ufpe.br",
+      idCourse: course5.id,
     },
   });
 
