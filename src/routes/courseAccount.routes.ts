@@ -1,12 +1,12 @@
 import { Router, }                  from "express";
 import { CourseAccountController, } from "../controllers/CourseAccountController";
-import { checkAdministrator, }      from "../middleware/checkAdministrator";
+import { verifyAdministratorUser, } from "../middleware/verifyAdministratorUser";
 
 const courseAccountController = new CourseAccountController();
 const courseAccountsRoutes    = Router();
 
-courseAccountsRoutes.get("/:idCourseAccount",                     courseAccountController.read   );
-courseAccountsRoutes.put("/:idCourseAccount",                     courseAccountController.update );
-courseAccountsRoutes.get("/"                , checkAdministrator, courseAccountController.readAll);
+courseAccountsRoutes.get("/:idCourseAccount",courseAccountController.read);
+courseAccountsRoutes.put("/:idCourseAccount",courseAccountController.update);
+courseAccountsRoutes.get("/", verifyAdministratorUser, courseAccountController.readAll);
 
 export { courseAccountsRoutes, };

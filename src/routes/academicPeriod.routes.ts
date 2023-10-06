@@ -1,12 +1,12 @@
 import { Router, }                   from "express";
 import { AcademicPeriodController, } from "../controllers/AcademicPeriodController";
-import { checkAdministrator, }       from "../middleware/checkAdministrator";
+import { verifyAdministratorUser, }  from "../middleware/verifyAdministratorUser";
 
 const academicPeriodController = new AcademicPeriodController();
 const academicPeriodRoutes     = Router();
 
-academicPeriodRoutes.post("/", checkAdministrator, academicPeriodController.create);
-academicPeriodRoutes.post("/:idAcademicPeriod", checkAdministrator, academicPeriodController.setActiveAcademicPeriod);
-academicPeriodRoutes.get("/", checkAdministrator, academicPeriodController.readAll);
+academicPeriodRoutes.post("/", verifyAdministratorUser, academicPeriodController.create);
+academicPeriodRoutes.post("/:idAcademicPeriod", verifyAdministratorUser, academicPeriodController.setActiveAcademicPeriod);
+academicPeriodRoutes.get("/", verifyAdministratorUser, academicPeriodController.readAll);
 
 export { academicPeriodRoutes, };

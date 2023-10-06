@@ -1,14 +1,14 @@
-import { Router, }                from "express";
-import { GrantedTimeController, } from "../controllers/GrantedTimeController";
-import { checkAdministrator, }    from "../middleware/checkAdministrator";
+import { Router, }                  from "express";
+import { GrantedTimeController, }   from "../controllers/GrantedTimeController";
+import { verifyAdministratorUser, } from "../middleware/verifyAdministratorUser";
 
 const grantedTimeController = new GrantedTimeController();
 const grantedTimeRoutes     = Router();
 
-grantedTimeRoutes.post("/", checkAdministrator, grantedTimeController.create);
+grantedTimeRoutes.post("/", verifyAdministratorUser, grantedTimeController.create);
 grantedTimeRoutes.get("/:idGrantedTime", grantedTimeController.read);
-grantedTimeRoutes.delete("/:idGrantedTime", checkAdministrator, grantedTimeController.delete);
-grantedTimeRoutes.get("/", checkAdministrator, grantedTimeController.readAll);
+grantedTimeRoutes.delete("/:idGrantedTime", verifyAdministratorUser, grantedTimeController.delete);
+grantedTimeRoutes.get("/", verifyAdministratorUser, grantedTimeController.readAll);
 
 grantedTimeRoutes.get("/:idCourseAccount",grantedTimeController.readGrantedTimesByCourseAccount);
 

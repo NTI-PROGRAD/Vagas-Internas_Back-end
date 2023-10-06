@@ -4,12 +4,11 @@ import { prismaClient, } from "../database/prismaClient";
 import { NotFoundError, UnauthorizedError, } from "../helpers/api-errors";
 import { AdministratorAccount, } from "@prisma/client";
 
-export const checkAdministrator = async (
+export async function verifyAdministratorUser(
   request: Request,
   response: Response,
   next: NextFunction
-) => {
-
+) {
   const { authorization, } = request.headers;
   if (!authorization) throw new UnauthorizedError("Token não encontrado!");
   
@@ -17,7 +16,7 @@ export const checkAdministrator = async (
   
   const token = authorization?.split(" ")[1];
   const { userId, } = <UserIdJwtPayload>jwt.verify(token ?? "", jwtSecretKey);
-  const administrator = await getAdministratorAccountsIfExists(userId);
+  const administrator = await getAdministratorAccountIfExists(userId);
 
   if (!administrator) throw new NotFoundError("Usuário não encontrado!");
 
@@ -25,8 +24,9 @@ export const checkAdministrator = async (
   request.user = loggedUser;
 
   next();
-};
+}
 
-const getAdministratorAccountsIfExists = async (userId: string): Promise<AdministratorAccount | null> => {
+async function getAdministratorAccountIfExists(userId: string): Promise<AdministratorAccount | null>
+{
   return await prismaClient.administratorAccount.findFirst({ where: { id: userId, }, });
-};
+}
