@@ -49,8 +49,11 @@ model CourseAccount {
   password     String
   email        String?
   phoneContact String?
+  idCourse     String  @unique
 
   coursesAccountsGetGrantedTimes CourseAccountGetGrantedTime[]
+
+  course Course @relation(fields: [idCourse], references: [id])
 
   @@map("courses_accounts")
 }
@@ -74,7 +77,8 @@ model Course {
   academicDegree String
   classesTime    ClassesTime
 
-  placesOffer PlacesOffer[]
+  placesOffer   PlacesOffer[]
+  CourseAccount CourseAccount?
 
   @@map("courses")
 }
