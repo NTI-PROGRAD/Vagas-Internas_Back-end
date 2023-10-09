@@ -1,5 +1,6 @@
 import { Request, Response, } from "express";
 import { prismaClient, } from "../database/prismaClient";
+import { IUpdateAdministratorAccountRequest, } from "../interfaces/IUpdateAdministratorAccount";
 
 export class AdministratorAccountController
 {
@@ -23,8 +24,18 @@ export class AdministratorAccountController
     return response.status(200).json({ administratorAccount, });
   }
 
-  public async update(request: Request, response: Response)
-  {}
+  public async update(request: IUpdateAdministratorAccountRequest, response: Response)
+  {
+    const { idAdministratorAccount, } = request.params;
+    const { ...administratorChanges } = request.body;
+
+    const administratorAccount = await prismaClient.administratorAccount.update({
+      where: { id: idAdministratorAccount, },
+      data: { ...administratorChanges, },
+    });
+
+    return response.status(200).json({ administratorAccount, });
+  }
 
   public async readAll(request: Request, response: Response)
   {}
