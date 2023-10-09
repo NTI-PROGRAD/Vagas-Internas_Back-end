@@ -13,6 +13,8 @@ export class PlaceOfferController
     this.readByCourseAccount = this.readByCourseAccount.bind(this);
     this.readByAcademicPeriod = this.readByAcademicPeriod.bind(this);
     this.read = this.read.bind(this);
+    this.update = this.update.bind(this);
+    this.updateByActiveAcademicPeriod = this.updateByActiveAcademicPeriod.bind(this);
   }
 
   public async create(request: ICreatePlaceOfferRequest, response: Response)
@@ -150,5 +152,15 @@ export class PlaceOfferController
     });
 
     return response.status(200).json({ placesOffer, });
+  }
+
+  public async update(request: Request, response: Response)
+  {
+
+  }
+
+  public async updateByActiveAcademicPeriod(request: Request, response: Response)
+  {
+    
   }
 }

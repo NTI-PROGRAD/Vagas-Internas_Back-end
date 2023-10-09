@@ -12,5 +12,7 @@ placeOffersRoutes.get("/periodo_academico_ativo", verifyAdministratorUser, place
 placeOffersRoutes.get("/conta_de_curso/:idCourse", verifyLoggedUser, placeOfferController.readByCourseAccount);
 placeOffersRoutes.get("/periodo_academico/:idAcademicPeriod", verifyAdministratorUser, placeOfferController.readByAcademicPeriod);
 placeOffersRoutes.get("/:idCourse/:idAcademicPeriod", verifyLoggedUser, placeOfferController.read);
+placeOffersRoutes.put("/", verifyLoggedUser, placeOfferController.update);
+placeOffersRoutes.put("/periodo_academico_ativo", verifyLoggedUser, placeOfferController.updateByActiveAcademicPeriod);
 
 export { placeOffersRoutes, };
