@@ -2,7 +2,7 @@ import { Request, Response, } from "express";
 import { ICreatePlaceOfferActiveAcademicPeriodRequest, ICreatePlaceOfferRequest, } from "../interfaces/ICreatePlaceOfferRequest";
 import { prismaClient, } from "../database/prismaClient";
 import { BadRequestError, } from "../helpers/api-errors";
-import { IUpdatePlaceOfferRequest, } from "../interfaces/IUpdatePlaceOfferRequest";
+import { IUpdatePlaceOfferActiveAcademicPeriodRequest, IUpdatePlaceOfferRequest, } from "../interfaces/IUpdatePlaceOfferRequest";
 
 export class PlaceOfferController
 {
@@ -167,8 +167,24 @@ export class PlaceOfferController
     return response.status(200).json({ updatedPlaceOffer, });
   }
 
-  public async updateByActiveAcademicPeriod(request: Request, response: Response)
-  {
-    
+  public async updateByActiveAcademicPeriod(
+    request: IUpdatePlaceOfferActiveAcademicPeriodRequest,
+    response: Response
+  ) {
+    const { ...placeOffer } = request.body;
+
+    const activeAcademicPeriod = await prismaClient.academicPeriod.findFirst({ where: { activePeriod: true, }, });
+
+    if (activeAcademicPeriod)
+    {
+      const updatedPlaceOffer = await prismaClient.placesOffer.update({
+        where: { idCourse_idAcademicPeriod: { idCourse: placeOffer.idCourse, idAcademicPeriod: activeAcademicPeriod.id, }, },
+        data: { ...placeOffer, },
+      });
+
+      return response.status(200).json({ updatedPlaceOffer, });
+    }
+    else
+      throw new BadRequestError("Não foi possível atualizar a oferta de vagas");
   }
 }
