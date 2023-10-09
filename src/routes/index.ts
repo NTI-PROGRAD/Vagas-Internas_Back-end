@@ -5,6 +5,7 @@ import { academicPeriodRoutes, } from "./academicPeriod.routes";
 import { authenticationRoutes, } from "./authentication.routes";
 import { placeOffersRoutes, } from "./placeOffers.routes";
 import { administratorAccountRoutes, } from "./administratorAccount.routes";
+import { courseRoutes, } from "./course.routes";
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use("/conta_de_curso", courseAccountsRoutes);
 router.use("/periodo_academico", academicPeriodRoutes);
 router.use("/oferta_de_vagas", placeOffersRoutes);
 router.use("/conta_administrativa", administratorAccountRoutes);
+router.use("/curso", courseRoutes);
 
 export { router, };
