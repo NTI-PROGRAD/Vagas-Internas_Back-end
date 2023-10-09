@@ -108,7 +108,20 @@ export class PlaceOfferController
   }
 
   public async readByActiveAcademicPeriod(request: Request, response: Response)
-  {}
+  {
+    const activeAcademicPeriod = await prismaClient.academicPeriod.findFirst({ where: { activePeriod: true, }, });
+
+    if (activeAcademicPeriod)
+    {
+      const placesOffer = await prismaClient.placesOffer.findMany({
+        where: { idAcademicPeriod: activeAcademicPeriod.id, },
+      });
+
+      return response.status(200).json({ placesOffer, });
+    }
+    else
+      throw new BadRequestError("Não foi possível ler ofertas de vagas!");
+  }
 
   public async readByCourseAccount(request: Request, response: Response)
   {}
