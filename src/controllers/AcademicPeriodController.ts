@@ -10,6 +10,7 @@ export class AcademicPeriodController
     this.create = this.create.bind(this);
     this.readAll = this.readAll.bind(this);
     this.setActiveAcademicPeriod = this.setActiveAcademicPeriod.bind(this);
+    this.readByLabel = this.readByLabel.bind(this);
   }
 
   public async create(request: ICreateAcademicPeriodRequest, response: Response)
@@ -63,5 +64,14 @@ export class AcademicPeriodController
     });
 
     return response.status(200).json({ message: `Novo período acadêmico ${updatedAcademicPeriod.label} vigente`, });
+  }
+
+  public async readByLabel(request: Request, response: Response)
+  {
+    const { label, } = request.params;
+
+    const academicPeriod = await prismaClient.academicPeriod.findFirst({ where: { label, }, });
+
+    return response.status(200).json({ academicPeriod, });
   }
 }
