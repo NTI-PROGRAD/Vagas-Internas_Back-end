@@ -142,5 +142,13 @@ export class PlaceOfferController
   }
 
   public async read(request: Request, response: Response)
-  {}
+  {
+    const { idCourse, idAcademicPeriod, } = request.params;
+
+    const placesOffer = await prismaClient.placesOffer.findFirst({
+      where: { idCourse, idAcademicPeriod, },
+    });
+
+    return response.status(200).json({ placesOffer, });
+  }
 }
