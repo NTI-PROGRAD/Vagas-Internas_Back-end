@@ -7,6 +7,11 @@ export class PlaceOfferController
   constructor()
   {
     this.create = this.create.bind(this);
+    this.createByActiveAcademicPeriod = this.createByActiveAcademicPeriod.bind(this);
+    this.readByActiveAcademicPeriod = this.readByActiveAcademicPeriod.bind(this);
+    this.readByCourseAccount = this.readByCourseAccount.bind(this);
+    this.readByAcademicPeriod = this.readByAcademicPeriod.bind(this);
+    this.read = this.read.bind(this);
   }
 
   public async create(request: ICreatePlaceOfferRequest, response: Response)
@@ -55,4 +60,19 @@ export class PlaceOfferController
                "com sucesso!",
     });
   }
+
+  public async createByActiveAcademicPeriod(request: Request, response: Response)
+  {}
+
+  public async readByActiveAcademicPeriod(request: Request, response: Response)
+  {}
+
+  public async readByCourseAccount(request: Request, response: Response)
+  {}
+
+  public async readByAcademicPeriod(request: Request, response: Response)
+  {}
+
+  public async read(request: Request, response: Response)
+  {}
 }
