@@ -124,7 +124,13 @@ export class PlaceOfferController
   }
 
   public async readByCourseAccount(request: Request, response: Response)
-  {}
+  {
+    const { idCourse, } = request.params;
+
+    const placesOffer = await prismaClient.placesOffer.findMany({ where: { idCourse, }, });
+
+    return response.status(200).json({ placesOffer, });
+  }
 
   public async readByAcademicPeriod(request: Request, response: Response)
   {}
