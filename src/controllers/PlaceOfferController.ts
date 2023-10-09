@@ -1,6 +1,7 @@
 import { Request, Response, } from "express";
-import { ICreatePlaceOfferRequest, } from "../interfaces/ICreatePlaceOfferRequest";
+import { ICreatePlaceOfferActiveAcademicPeriodRequest, ICreatePlaceOfferRequest, } from "../interfaces/ICreatePlaceOfferRequest";
 import { prismaClient, } from "../database/prismaClient";
+import { BadRequestError, } from "../helpers/api-errors";
 
 export class PlaceOfferController
 {
@@ -61,8 +62,50 @@ export class PlaceOfferController
     });
   }
 
-  public async createByActiveAcademicPeriod(request: Request, response: Response)
-  {}
+  public async createByActiveAcademicPeriod(
+    request: ICreatePlaceOfferActiveAcademicPeriodRequest,
+    response: Response
+  ) {
+    
+    const { ...placesOffer }   = request.body;
+    const activeAcademicPeriod = await prismaClient.academicPeriod.findFirst({ where: { activePeriod: true, }, });
+
+    if (activeAcademicPeriod)
+    {
+      const createdPlacesOffer = await prismaClient.placesOffer.create({
+        data: {
+          idAcademicPeriod: activeAcademicPeriod.id,
+          ...placesOffer,
+        },
+        select: {
+          idCourse: true,
+          idAcademicPeriod: true,
+          morningClasses: true,
+          afternoonClasses: true,
+          nightClasses: true,
+          fullTimeClasses: true,
+          course: {
+            select: {
+              name: true,
+            },
+          },
+          academicPeriod: {
+            select: {
+              label: true,
+            },
+          },
+        },
+      });
+
+      return response.status(201).json({
+        message: `As ofertas de vagas para o curso ${createdPlacesOffer.course.name} para o ` +
+                 `periodo letivo de ${createdPlacesOffer.academicPeriod.label} foram criadas ` +
+                 "com sucesso",
+      });  
+    }
+    else
+      throw new BadRequestError("Não foi possível criar nova oferta de vagas!");
+  }
 
   public async readByActiveAcademicPeriod(request: Request, response: Response)
   {}

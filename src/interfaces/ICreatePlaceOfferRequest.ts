@@ -1,6 +1,6 @@
 import { Request, } from "express";
 
-interface ICreatePlaceOfferBodyRequest
+interface IPlaceOfferBodyRequest
 {
   idCourse: string;
   idAcademicPeriod: string;
@@ -10,7 +10,18 @@ interface ICreatePlaceOfferBodyRequest
   fullTimeClasses: number;
 }
 
-export interface ICreatePlaceOfferRequest extends Request
+interface IPlaceOfferActiveAcademicPeriodBodyRequest
+  extends Omit<IPlaceOfferBodyRequest, "idAcademicPeriod">
+{}
+
+export interface ICreatePlaceOfferRequest
+ extends Request
 {
-  body: ICreatePlaceOfferBodyRequest;
+  body: IPlaceOfferBodyRequest;
+}
+
+export interface ICreatePlaceOfferActiveAcademicPeriodRequest
+ extends Request
+{
+  body: IPlaceOfferActiveAcademicPeriodBodyRequest;
 }
