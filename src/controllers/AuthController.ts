@@ -3,7 +3,7 @@ import { AdministratorAccount, CourseAccount, } from "@prisma/client";
 import { compare, } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prismaClient, } from "../database/prismaClient";
-import { NotFoundError, } from "../helpers/api-errors";
+import { NotFoundError, UnauthorizedError, } from "../helpers/api-errors";
 import { IAuthLoginRequest, } from "../interfaces/IAuthLoginRequest";
 
 export class AuthController
@@ -16,6 +16,8 @@ export class AuthController
     this.validAdministratorAccountAuthentication = this.validAdministratorAccountAuthentication.bind(this);
     this.validCourseAccountAuthentication = this.validCourseAccountAuthentication.bind(this);
     this.matchPassword = this.matchPassword.bind(this);
+    this.hasGrantedTime = this.hasGrantedTime.bind(this);
+    this.isWithinDeadline = this.isWithinDeadline.bind(this);
   }
 
   public async login(request: IAuthLoginRequest, response: Response)
@@ -24,7 +26,7 @@ export class AuthController
     const jwtSecretKey = process.env.JWT_SECRET_KEY as string;
 
     const administratorUser = await this.getAdministratorAccount(login);
-    const coordinatorUser   = await this.getCourseAccount(login);
+    const courseAccount     = await this.getCourseAccount(login);
 
     if (await this.validAdministratorAccountAuthentication(password, administratorUser))
     {
@@ -32,9 +34,9 @@ export class AuthController
       return response.json({ token, });
     }
 
-    if (await this.validCourseAccountAuthentication(password, coordinatorUser))
+    if (await this.validCourseAccountAuthentication(password, courseAccount))
     {
-      const token = jwt.sign({ userId: coordinatorUser?.id, }, jwtSecretKey, {});
+      const token = jwt.sign({ userId: courseAccount?.id, }, jwtSecretKey, {});
       return response.json({ token, });
     }
 
@@ -58,15 +60,43 @@ export class AuthController
     return await this.matchPassword(password, administratorUser.password);
   }
 
-  private async validCourseAccountAuthentication(password: string, coordinatorUser: CourseAccount | null): Promise<boolean>
+  private async validCourseAccountAuthentication(password: string, courseAccount: CourseAccount | null): Promise<boolean>
   {
-    if (coordinatorUser === null) return false;
+    if (courseAccount === null) return false;
+    if (!await this.hasGrantedTime(courseAccount)) return false;
 
-    return await this.matchPassword(password, coordinatorUser.password);
+    return await this.matchPassword(password, courseAccount.password);
   }
 
   private async matchPassword(password: string, encryptedPassword: string): Promise<boolean>
   {
     return await compare(password, encryptedPassword);
+  }
+
+  private async hasGrantedTime(courseAccount: CourseAccount): Promise<boolean>
+  {
+    const courseGrantedTimes = await prismaClient.courseAccountGetGrantedTime.findMany({
+      where: { idCourseAccount: courseAccount.id, },
+      select: {
+        grantDatetime: true,
+        grantedTime: {
+          select: {
+            startTime: true,
+            endTime: true,
+          },
+        },
+      },
+    });
+
+    for (const grantedTime of courseGrantedTimes)
+      if (this.isWithinDeadline(grantedTime.grantedTime.endTime))
+        return true;
+
+    throw new UnauthorizedError("Esta conta de coordenação não possui acesso no momento!");
+  }
+
+  private isWithinDeadline(endTime: Date): boolean
+  {
+    return (new Date().getTime() <= endTime.getTime());
   }
 }
