@@ -1,4 +1,5 @@
 import { Request, Response, } from "express";
+import { prismaClient, } from "../database/prismaClient";
 
 export class AdministratorAccountController
 {
@@ -10,7 +11,17 @@ export class AdministratorAccountController
   }
 
   public async read(request: Request, response: Response)
-  {}
+  {
+    const { idAdministratorAccount, } = request.params;
+
+    const administratorAccount = await prismaClient.administratorAccount.findFirst({
+      where: {
+        id: idAdministratorAccount,
+      },
+    });
+
+    return response.status(200).json({ administratorAccount, });
+  }
 
   public async update(request: Request, response: Response)
   {}
