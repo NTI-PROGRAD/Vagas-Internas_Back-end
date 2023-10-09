@@ -38,5 +38,11 @@ export class AdministratorAccountController
   }
 
   public async readAll(request: Request, response: Response)
-  {}
+  {
+    const administratorsAccounts = await prismaClient.administratorAccount.findMany({
+      orderBy: { login: "asc", },
+    });
+
+    return response.status(200).json({ administratorsAccounts, });
+  }
 }
