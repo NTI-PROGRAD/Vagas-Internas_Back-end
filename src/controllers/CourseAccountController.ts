@@ -31,40 +31,22 @@ export class CourseAccountController
 
   public async update(request: IUpdateCoordinationRequest, response: Response)
   {
-    const { idCourseAccount, } = request.params;
-    const { email, phoneContact, } = request.body;
+    const { idCourseAccount, }        = request.params;
+    const { ...courseAccountPayload } = request.body;
 
-    let courseAccount;
+    const updatedCourseAccount = await prismaClient.courseAccount.update({
+      where: { id: idCourseAccount, },
+      data: { ...courseAccountPayload, },
+      select: {
+        id: true,
+        login: true,
+        email: true,
+        phoneContact: true,
+        idCourse: true,
+      },
+    });    
 
-    if (email !== null)
-    {
-      courseAccount = await prismaClient.courseAccount.update({
-        where: { id: idCourseAccount, },
-        data: { email, },
-        select: {
-          id: true,
-          login: true,
-          email: true,
-          phoneContact: true,
-        },
-      });
-    }
-
-    if (phoneContact !== null)
-    {
-      courseAccount = await prismaClient.courseAccount.update({
-        where: { id: idCourseAccount, },
-        data: { phoneContact, },
-        select: {
-          id: true,
-          login: true,
-          email: true,
-          phoneContact: true,
-        },
-      });
-    }
-
-    return response.status(200).json({ courseAccount, });
+    return response.status(200).json({ updatedCourseAccount, });
   }
 
   public async readAll(request: Request, response: Response)
