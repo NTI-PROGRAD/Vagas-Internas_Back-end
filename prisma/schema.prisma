@@ -29,6 +29,22 @@ enum academicDegree {
   Licenciatura
 }
 
+enum AcademicCenters {
+  CAC
+  CB
+  CCEN
+  CCJ
+  CCS
+  CCM
+  CCSA
+  CE
+  CFCH
+  CIn
+  CTG
+  CAA
+  CAV
+}
+
 model AdministratorAccount {
   id           String  @id @default(uuid())
   login        String  @unique
@@ -83,11 +99,12 @@ model CourseAccountGetGrantedTime {
 }
 
 model Course {
-  id             String         @id @default(uuid())
+  id             String          @id @default(uuid())
   name           String
   campus         Campus
   academicDegree academicDegree
   classesTime    ClassesTime
+  academicCenter AcademicCenters
 
   placesOffer   PlacesOffer[]
   CourseAccount CourseAccount?

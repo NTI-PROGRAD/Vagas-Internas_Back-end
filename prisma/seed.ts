@@ -60,6 +60,7 @@ async function main()
       classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
+      academicCenter: "CCSA",
     },
   });
 
@@ -69,6 +70,7 @@ async function main()
       classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
+      academicCenter: "CFCH",
     },
   });
 
@@ -78,6 +80,7 @@ async function main()
       classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
+      academicCenter: "CAC",
     },
   });
 
@@ -87,6 +90,7 @@ async function main()
       classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
+      academicCenter: "CAC",
     },
   });
 
@@ -96,6 +100,7 @@ async function main()
       classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Licenciatura",
+      academicCenter: "CAC",
     },
   });
 
