@@ -6,6 +6,7 @@ import { verifyLoggedUser, }        from "../middleware/verifyLoggedUser";
 const courseAccountController = new CourseAccountController();
 const courseAccountsRoutes    = Router();
 
+courseAccountsRoutes.get("/query", verifyLoggedUser, courseAccountController.searchByLogin);
 courseAccountsRoutes.get("/:idCourseAccount", verifyLoggedUser, courseAccountController.read);
 courseAccountsRoutes.put("/:idCourseAccount", verifyLoggedUser, courseAccountController.update);
 courseAccountsRoutes.get("/", verifyAdministratorUser, courseAccountController.readAll);

@@ -9,6 +9,7 @@ export class CourseAccountController
     this.read = this.read.bind(this);
     this.update = this.update.bind(this);
     this.readAll = this.readAll.bind(this);
+    this.searchByLogin = this.searchByLogin.bind(this);
   }
 
   public async read(request: Request, response: Response)
@@ -63,5 +64,20 @@ export class CourseAccountController
     });
 
     return response.status(200).json({ coursesAccounts, });
+  }
+
+  public async searchByLogin(request: Request, response: Response)
+  {
+    const query = request.query.name as string;
+    
+    const courseAccounts = await prismaClient.courseAccount.findMany({
+      where: {
+        login: {
+          contains: query,
+        },
+      },
+    });
+
+    return response.status(200).json({ courseAccounts, });
   }
 }
