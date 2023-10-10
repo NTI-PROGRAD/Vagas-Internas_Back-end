@@ -57,6 +57,7 @@ export class CourseAccountController
         login: true,
         email: true,
         phoneContact: true,
+        idCourse: true,
       },
       orderBy: { login: "asc", },
     });
