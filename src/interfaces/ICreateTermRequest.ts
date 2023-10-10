@@ -1,6 +1,6 @@
 import { Request, } from "express";
 
-interface ICreateTermBodyRequest
+export interface ICreateTermBodyRequest
 {
   startTime: string;
   endTime: string;

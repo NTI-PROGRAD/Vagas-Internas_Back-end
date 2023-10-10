@@ -1,6 +1,7 @@
 import { Request, Response, } from "express";
 import { prismaClient, } from "../database/prismaClient";
-import { ICreateTermRequest, } from "../interfaces/ICreateTermRequest";
+import { ICreateTermBodyRequest, ICreateTermRequest, } from "../interfaces/ICreateTermRequest";
+import { BadRequestError, } from "../helpers/api-errors";
 
 export class GrantedTimeController
 {
@@ -16,31 +17,15 @@ export class GrantedTimeController
   public async create(request: ICreateTermRequest, response: Response)
   {
     const { id: idAdministratorAccount, } = request.user;
-    const { startTime, endTime, idCoursesAccounts, } = request.body;
+    const { ...createGrantedTimePayload } = request.body;
 
     if (idAdministratorAccount)
     {
-      const grantedTime = await prismaClient.grantedTime.create({
-        data: {
-          idAdministratorAccount,
-          startTime: new Date(startTime),
-          endTime: new Date(endTime),
-        },
-      });
-
-      for (const id of idCoursesAccounts)
-      {
-        await prismaClient.courseAccountGetGrantedTime.create({
-          data: {
-            idCourseAccount: id,
-            idGrantedTime: grantedTime.id,
-            grantDatetime: new Date(),
-          },
-        });
-      }
-
+      GrantedTimeTransactions.createGrantedTime(idAdministratorAccount, createGrantedTimePayload);
       return response.status(201).json({ message: "Prazo criado com sucesso!", });
     }
+
+    throw new BadRequestError("Não foi possível criar um prazo de acesso!");
   }
 
   public async delete(request: Request, response: Response)
@@ -117,5 +102,35 @@ export class GrantedTimeController
     });
 
     return response.status(200).json({ grantedTimes, });
+  }
+}
+
+class GrantedTimeTransactions
+{
+  public static async createGrantedTime(idAdministratorAccount: string, createGrantedTimePayload: ICreateTermBodyRequest)
+  {
+    return await prismaClient.$transaction(async (tx) => {
+      
+      const { startTime, endTime, idCoursesAccounts, } = createGrantedTimePayload;
+
+      const createdGrantedTime = await tx.grantedTime.create({
+        data: {
+          idAdministratorAccount,
+          startTime: new Date(startTime),
+          endTime: new Date(endTime),
+        },
+      });
+
+      for (const id of idCoursesAccounts)
+      {
+        await tx.courseAccountGetGrantedTime.create({
+          data: {
+            idCourseAccount: id,
+            idGrantedTime: createdGrantedTime.id,
+            grantDatetime: new Date(),
+          },
+        });
+      }
+    });
   }
 }
