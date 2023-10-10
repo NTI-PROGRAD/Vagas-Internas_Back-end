@@ -21,7 +21,8 @@ export class CourseAccountController
         id: true,
         login: true,
         email: true,
-        phoneContact: true,       
+        phoneContact: true,
+        idCourse: true,
       },
     });
 
