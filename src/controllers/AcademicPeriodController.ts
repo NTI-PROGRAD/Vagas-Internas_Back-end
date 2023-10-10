@@ -21,10 +21,12 @@ export class AcademicPeriodController
 
     if (idAdministratorAccount)
     {
-      const newAcademicPeriod = await AcademicPeriodTransactions.createAcademicPeriod({
-        ...academicPeriodPayload,
-        idAdministratorAccount,
-        activePeriod: false,
+      const newAcademicPeriod = await prismaClient.academicPeriod.create({
+        data: {
+          idAdministratorAccount,
+          ...academicPeriodPayload,
+          activePeriod: false,
+        },
       });
 
       return response.status(200).json({ newAcademicPeriod, });
@@ -60,17 +62,6 @@ export class AcademicPeriodController
 
 class AcademicPeriodTransactions
 {
-  public static async createAcademicPeriod(academicPeriod: Omit<AcademicPeriod, "id">)
-  {
-    return await prismaClient.$transaction(async (tx) => {
-      const newAcademicPeriod = tx.academicPeriod.create({
-        data: { ...academicPeriod, },
-      });
-
-      return newAcademicPeriod;
-    });
-  }
-
   public static async setActiveAcademicPeriod(idAcademicPeriod: string): Promise<AcademicPeriod>
   {
     return await prismaClient.$transaction(async (tx) => {
