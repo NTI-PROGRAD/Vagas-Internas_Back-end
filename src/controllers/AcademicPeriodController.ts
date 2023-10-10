@@ -1,7 +1,8 @@
 import { Request, Response, } from "express";
 import { prismaClient, } from "../database/prismaClient";
-import { UnauthorizedError, } from "../helpers/api-errors";
+import { BadRequestError, UnauthorizedError, } from "../helpers/api-errors";
 import { ICreateAcademicPeriodRequest, } from "../interfaces/ICreateAcademicPeriodRequest";
+import { AcademicPeriod, } from "@prisma/client";
 
 export class AcademicPeriodController
 {
@@ -16,33 +17,21 @@ export class AcademicPeriodController
   public async create(request: ICreateAcademicPeriodRequest, response: Response)
   {
     const { id: idAdministratorAccount, } = request.user;
-    const {
-      label,
-      diplomaBearer,
-      externalTransfer,
-      internalCourseTransfer,
-      internalClassTimeTransfer,
-    } = request.body;
+    const { ...academicPeriodPayload } = request.body;
 
     if (idAdministratorAccount)
     {
-      const academicPeriod = await prismaClient.academicPeriod.create({
-        data: {
-          idAdministratorAccount,
-          label,
-          activePeriod: false,
-          diplomaBearer,
-          externalTransfer,
-          internalCourseTransfer,
-          internalClassTimeTransfer,
-        },
+      const newAcademicPeriod = await AcademicPeriodTransactions.createAcademicPeriod({
+        ...academicPeriodPayload,
+        idAdministratorAccount,
+        activePeriod: false,
       });
 
-      return response.status(201).json({ message: `Período acadêmico ${academicPeriod.label} criado com sucesso!`, });
+      return response.status(200).json({ newAcademicPeriod, });
     }
-
-    throw new UnauthorizedError("Erro ao cadastrar novo período acadêmico, usuário não autorizado!");
-  }
+    else
+      throw new BadRequestError("Não foi possível criar um novo periodo letivo!");
+ }
 
   public async readAll(request: Request, response: Response)
   {
@@ -73,5 +62,19 @@ export class AcademicPeriodController
     const academicPeriod = await prismaClient.academicPeriod.findFirst({ where: { label, }, });
 
     return response.status(200).json({ academicPeriod, });
+  }
+}
+
+class AcademicPeriodTransactions
+{
+  public static async createAcademicPeriod(academicPeriod: Omit<AcademicPeriod, "id">)
+  {
+    return await prismaClient.$transaction(async (tx) => {
+      const newAcademicPeriod = tx.academicPeriod.create({
+        data: { ...academicPeriod, },
+      });
+
+      return newAcademicPeriod;
+    });
   }
 }
