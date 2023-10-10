@@ -12,9 +12,21 @@ datasource db {
 
 enum ClassesTime {
   Matutino
+  Matutino_Vespertino
   Vespertino
+  Vespertino_Noturno
   Noturno
-  Integral
+}
+
+enum Campus {
+  Recife
+  Caruaru
+  Vitoria
+}
+
+enum academicDegree {
+  Bacharelado
+  Licenciatura
 }
 
 model AdministratorAccount {
@@ -71,10 +83,10 @@ model CourseAccountGetGrantedTime {
 }
 
 model Course {
-  id             String      @id @default(uuid())
+  id             String         @id @default(uuid())
   name           String
-  campus         String
-  academicDegree String
+  campus         Campus
+  academicDegree academicDegree
   classesTime    ClassesTime
 
   placesOffer   PlacesOffer[]

@@ -57,7 +57,7 @@ async function main()
   const course1 = await prisma.course.create({
     data: {
       name: "Administração",
-      classesTime: "Integral",
+      classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
     },
@@ -66,7 +66,7 @@ async function main()
   const course2 = await prisma.course.create({
     data: {
       name: "Arqueologia",
-      classesTime: "Integral",
+      classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
     },
@@ -75,7 +75,7 @@ async function main()
   const course3 = await prisma.course.create({
     data: {
       name: "Arquitetura e Urbanismo",
-      classesTime: "Integral",
+      classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
     },
@@ -84,7 +84,7 @@ async function main()
   const course4 = await prisma.course.create({
     data: {
       name: "Artes Visuais",
-      classesTime: "Integral",
+      classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Bacharelado",
     },
@@ -93,7 +93,7 @@ async function main()
   const course5 = await prisma.course.create({
     data: {
       name: "Artes Visuais",
-      classesTime: "Integral",
+      classesTime: "Matutino_Vespertino",
       campus: "Recife",
       academicDegree: "Licenciatura",
     },
