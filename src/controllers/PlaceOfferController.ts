@@ -20,24 +20,10 @@ export class PlaceOfferController
 
   public async create(request: ICreatePlaceOfferRequest, response: Response)
   {
-    const {
-      idCourse,
-      idAcademicPeriod,
-      morningClasses,
-      afternoonClasses,
-      nightClasses,
-      fullTimeClasses,
-    } = request.body;
+    const { ...createPlaceOfferPayload } = request.body;
 
     const placesOffer = await prismaClient.placesOffer.create({
-      data: {
-        idCourse,
-        idAcademicPeriod,
-        morningClasses,
-        afternoonClasses,
-        nightClasses,
-        fullTimeClasses,
-      },
+      data: { ...createPlaceOfferPayload, },
       select: {
         idCourse: true,
         idAcademicPeriod: true,
@@ -45,16 +31,8 @@ export class PlaceOfferController
         afternoonClasses: true,
         nightClasses: true,
         fullTimeClasses: true,
-        course: {
-          select: {
-            name: true,
-          },
-        },
-        academicPeriod: {
-          select: {
-            label: true,
-          },
-        },
+        course: { select: { name: true, }, },
+        academicPeriod: { select: { label: true, }, },
       },
     });
 
