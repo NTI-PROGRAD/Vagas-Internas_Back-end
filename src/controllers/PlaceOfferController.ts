@@ -48,7 +48,7 @@ export class PlaceOfferController
     response: Response
   ) {
     
-    const { ...placesOffer }   = request.body;
+    const { ...createPlaceOfferPayload }   = request.body;
     const activeAcademicPeriod = await prismaClient.academicPeriod.findFirst({ where: { activePeriod: true, }, });
 
     if (activeAcademicPeriod)
@@ -56,7 +56,7 @@ export class PlaceOfferController
       const createdPlacesOffer = await prismaClient.placesOffer.create({
         data: {
           idAcademicPeriod: activeAcademicPeriod.id,
-          ...placesOffer,
+          ...createPlaceOfferPayload,
         },
         select: {
           idCourse: true,
@@ -65,16 +65,8 @@ export class PlaceOfferController
           afternoonClasses: true,
           nightClasses: true,
           fullTimeClasses: true,
-          course: {
-            select: {
-              name: true,
-            },
-          },
-          academicPeriod: {
-            select: {
-              label: true,
-            },
-          },
+          course: { select: { name: true, }, },
+          academicPeriod: { select: { label: true, }, },
         },
       });
 
