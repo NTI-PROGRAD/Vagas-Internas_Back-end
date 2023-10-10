@@ -32,8 +32,7 @@ export class GrantedTimeController
   {
     const { idGrantedTime, } = request.params;
 
-    await prismaClient.courseAccountGetGrantedTime.deleteMany({ where: { idGrantedTime, }, });
-    await prismaClient.grantedTime.delete({ where: { id: idGrantedTime, }, });
+    GrantedTimeTransactions.deleteGrantedTime(idGrantedTime);
 
     return response.status(200).json({ message: "Prazo deletado com sucesso!", });
   }
@@ -131,6 +130,14 @@ class GrantedTimeTransactions
           },
         });
       }
+    });
+  }
+
+  public static async deleteGrantedTime(idGrantedTime: string)
+  {
+    return await prismaClient.$transaction(async (tx) => {
+      await tx.courseAccountGetGrantedTime.deleteMany({ where: { idGrantedTime, }, });
+      await tx.grantedTime.delete({ where: { id: idGrantedTime, }, });
     });
   }
 }
