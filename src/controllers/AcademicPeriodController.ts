@@ -43,14 +43,7 @@ export class AcademicPeriodController
   {
     const { idAcademicPeriod, } = request.params;
 
-    await prismaClient.academicPeriod.updateMany({
-      data: { activePeriod: false, },
-    });
-
-    const updatedAcademicPeriod = await prismaClient.academicPeriod.update({
-      where: { id: idAcademicPeriod, },
-      data: { activePeriod: true, },
-    });
+    const updatedAcademicPeriod = await AcademicPeriodTransactions.setActiveAcademicPeriod(idAcademicPeriod);
 
     return response.status(200).json({ message: `Novo período acadêmico ${updatedAcademicPeriod.label} vigente`, });
   }
@@ -75,6 +68,22 @@ class AcademicPeriodTransactions
       });
 
       return newAcademicPeriod;
+    });
+  }
+
+  public static async setActiveAcademicPeriod(idAcademicPeriod: string): Promise<AcademicPeriod>
+  {
+    return await prismaClient.$transaction(async (tx) => {
+      await tx.academicPeriod.updateMany({
+        data: { activePeriod: false, },
+      });
+
+      const updatedAcademicPeriod = await tx.academicPeriod.update({
+        where: { id: idAcademicPeriod, },
+        data: { activePeriod: true, },
+      });
+
+      return updatedAcademicPeriod;
     });
   }
 }
