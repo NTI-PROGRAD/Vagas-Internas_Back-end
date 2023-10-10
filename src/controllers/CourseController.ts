@@ -6,7 +6,7 @@ export class CourseController
   constructor()
   {
     this.readById = this.readById.bind(this);
-    this.readByName = this.readByName.bind(this);
+    this.searchByName = this.searchByName.bind(this);
     this.readAll = this.readAll.bind(this);
   }
 
@@ -23,7 +23,7 @@ export class CourseController
     return response.status(200).json({ courses, });
   }
 
-  public async readByName(request: Request, response: Response)
+  public async searchByName(request: Request, response: Response)
   {
     const query = request.query.name as string;
 
