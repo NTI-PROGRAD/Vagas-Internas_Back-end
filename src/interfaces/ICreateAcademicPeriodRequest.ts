@@ -1,15 +1,10 @@
 import { Request, } from "express";
-
-interface ICreateAcademicPeriodBodyRequest
-{
-  label: string;
-  diplomaBearer: boolean;
-  externalTransfer: boolean;
-  internalCourseTransfer: boolean;
-  internalClassTimeTransfer: boolean;
-}
+import { AcademicPeriod, } from "@prisma/client";
 
 export interface ICreateAcademicPeriodRequest extends Request
 {
-  body: ICreateAcademicPeriodBodyRequest;
+  body: Omit<
+    AcademicPeriod,
+    "id" | "idAdministratorAccount" | "activePeriod"
+  >;
 }
