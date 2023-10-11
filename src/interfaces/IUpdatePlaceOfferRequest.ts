@@ -1,23 +1,18 @@
 import { Request, } from "express";
+import { PlacesOffer, } from "@prisma/client";
 
-interface IPlaceOfferBodyRequest
-{
-  idCourse: string;
-  idAcademicPeriod: string;
-  morningClasses?: number;
-  afternoonClasses?: number;
-  nightClasses?: number;
-  fullTimeClasses?: number;
-}
+interface IUpdatePlacesOfferPayload
+  extends PlacesOffer
+{}
 
-export interface IUpdatePlaceOfferRequest
+export interface IUpdatePlacesOfferRequest
   extends Request
 {
-  body: IPlaceOfferBodyRequest;
+  body: IUpdatePlacesOfferPayload;
 }
 
-export interface IUpdatePlaceOfferActiveAcademicPeriodRequest
+export interface IUpdatePlacesOfferActiveAcademicPeriodRequest
   extends Request
 {
-  body: Omit<IPlaceOfferBodyRequest, "idAcademicPeriod">
+  body: Omit<IUpdatePlacesOfferPayload, "idAcademicPeriod">
 }

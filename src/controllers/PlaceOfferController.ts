@@ -2,7 +2,7 @@ import { Request, Response, } from "express";
 import { ICreatePlaceOfferActiveAcademicPeriodRequest, ICreatePlaceOfferRequest, } from "../interfaces/ICreatePlaceOfferRequest";
 import { prismaClient, } from "../database/prismaClient";
 import { BadRequestError, } from "../helpers/api-errors";
-import { IUpdatePlaceOfferActiveAcademicPeriodRequest, IUpdatePlaceOfferRequest, } from "../interfaces/IUpdatePlaceOfferRequest";
+import { IUpdatePlacesOfferRequest, IUpdatePlacesOfferActiveAcademicPeriodRequest, } from "../interfaces/IUpdatePlaceOfferRequest";
 
 export class PlaceOfferController
 {
@@ -27,10 +27,12 @@ export class PlaceOfferController
       select: {
         idCourse: true,
         idAcademicPeriod: true,
-        morningClasses: true,
-        afternoonClasses: true,
-        nightClasses: true,
-        fullTimeClasses: true,
+        entryModality: true,
+        morning: true,
+        morningAfternoon: true,
+        afternoon: true,
+        afternoonNight: true,
+        night: true,
         course: { select: { name: true, }, },
         academicPeriod: { select: { label: true, }, },
       },
@@ -61,10 +63,11 @@ export class PlaceOfferController
         select: {
           idCourse: true,
           idAcademicPeriod: true,
-          morningClasses: true,
-          afternoonClasses: true,
-          nightClasses: true,
-          fullTimeClasses: true,
+          morning: true,
+          morningAfternoon: true,
+          afternoon: true,
+          afternoonNight: true,
+          night: true,
           course: { select: { name: true, }, },
           academicPeriod: { select: { label: true, }, },
         },
@@ -125,31 +128,45 @@ export class PlaceOfferController
     return response.status(200).json({ placesOffer, });
   }
 
-  public async update(request: IUpdatePlaceOfferRequest, response: Response)
+  public async update(request: IUpdatePlacesOfferRequest, response: Response)
   {
-    const { ...placeOffer } = request.body;
+    const { ...placesOfferPayload } = request.body;
 
     const updatedPlaceOffer = await prismaClient.placesOffer.update({
-      where: { idCourse_idAcademicPeriod: { idCourse: placeOffer.idCourse, idAcademicPeriod: placeOffer.idAcademicPeriod, }, },
-      data: { ...placeOffer, },
+      where: {
+        idCourse_idAcademicPeriod_entryModality: {
+          idCourse: placesOfferPayload.idCourse,
+          idAcademicPeriod: placesOfferPayload.idAcademicPeriod,
+          entryModality: placesOfferPayload.entryModality,
+        },
+      },
+      data: {
+        ...placesOfferPayload,
+      },
     });
 
     return response.status(200).json({ updatedPlaceOffer, });
   }
 
   public async updateByActiveAcademicPeriod(
-    request: IUpdatePlaceOfferActiveAcademicPeriodRequest,
+    request: IUpdatePlacesOfferActiveAcademicPeriodRequest,
     response: Response
   ) {
-    const { ...placeOffer } = request.body;
+    const { ...placesOfferPayload } = request.body;
 
     const activeAcademicPeriod = await prismaClient.academicPeriod.findFirst({ where: { activePeriod: true, }, });
 
     if (activeAcademicPeriod)
     {
       const updatedPlaceOffer = await prismaClient.placesOffer.update({
-        where: { idCourse_idAcademicPeriod: { idCourse: placeOffer.idCourse, idAcademicPeriod: activeAcademicPeriod.id, }, },
-        data: { ...placeOffer, },
+        where: {
+          idCourse_idAcademicPeriod_entryModality: {
+            idCourse: placesOfferPayload.idCourse,
+            idAcademicPeriod: activeAcademicPeriod.id,
+            entryModality: placesOfferPayload.entryModality,
+          },
+        },
+        data: { ...placesOfferPayload, },
       });
 
       return response.status(200).json({ updatedPlaceOffer, });
