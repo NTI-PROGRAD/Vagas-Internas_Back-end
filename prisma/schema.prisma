@@ -45,6 +45,13 @@ enum AcademicCenters {
   CAV
 }
 
+enum EntryModality {
+  InternalCourseTransfer
+  InternalClassTimeTransfer
+  ExternalTransfer
+  DiplomaBearer
+}
+
 model AdministratorAccount {
   id           String  @id @default(uuid())
   login        String  @unique
@@ -115,15 +122,18 @@ model Course {
 model PlacesOffer {
   idCourse         String
   idAcademicPeriod String
-  morningClasses   Int
-  afternoonClasses Int
-  nightClasses     Int
-  fullTimeClasses  Int
+  entryModality    EntryModality
+
+  morning          Int
+  morningAfternoon Int
+  afternoon        Int
+  afternoonNight   Int
+  night            Int
 
   course         Course         @relation(fields: [idCourse], references: [id])
   academicPeriod AcademicPeriod @relation(fields: [idAcademicPeriod], references: [id])
 
-  @@id([idCourse, idAcademicPeriod])
+  @@id([idCourse, idAcademicPeriod, entryModality])
   @@map("place_offers")
 }
 
@@ -132,11 +142,6 @@ model AcademicPeriod {
   idAdministratorAccount String
   label                  String  @unique
   activePeriod           Boolean
-
-  internalCourseTransfer    Boolean
-  internalClassTimeTransfer Boolean
-  externalTransfer          Boolean
-  diplomaBearer             Boolean
 
   placesOffer PlacesOffer[]
 

@@ -154,10 +154,6 @@ async function main()
       idAdministratorAccount: administratorAccount1.id,
       label: "2023.2",
       activePeriod: false,
-      diplomaBearer: true,
-      externalTransfer: false,
-      internalClassTimeTransfer: true,
-      internalCourseTransfer: true,
     },
   });
   
@@ -166,10 +162,6 @@ async function main()
       idAdministratorAccount: administratorAccount1.id,
       label: "2024.1",
       activePeriod: true,
-      diplomaBearer: true,
-      externalTransfer: false,
-      internalClassTimeTransfer: true,
-      internalCourseTransfer: true,
     },
   });
 
@@ -178,10 +170,100 @@ async function main()
       idAdministratorAccount: administratorAccount1.id,
       label: "2024.2",
       activePeriod: false,
-      diplomaBearer: true,
-      externalTransfer: false,
-      internalClassTimeTransfer: true,
-      internalCourseTransfer: true,
+    },
+  });
+
+  const academicPeriod4 = await prisma.academicPeriod.create({
+    data: {
+      idAdministratorAccount: administratorAccount1.id,
+      label: "2025.1",
+      activePeriod: false,
+    },
+  });
+
+  const academicPeriod5 = await prisma.academicPeriod.create({
+    data: {
+      idAdministratorAccount: administratorAccount1.id,
+      label: "2025.2",
+      activePeriod: false,
+    },
+  });
+
+  const placesOffer1 = await prisma.placesOffer.create({
+    data: {
+      idCourse: course1.id,
+      idAcademicPeriod: academicPeriod2.id,
+      entryModality: "InternalCourseTransfer",
+      morning: 10,
+      morningAfternoon: 10,
+      afternoon: 15,
+      afternoonNight: 15,
+      night: 5,
+    },
+  });
+
+  const placesOffer2 = await prisma.placesOffer.create({
+    data: {
+      idCourse: course1.id,
+      idAcademicPeriod: academicPeriod2.id,
+      entryModality: "InternalClassTimeTransfer",
+      morning: 5,
+      morningAfternoon: 5,
+      afternoon: 10,
+      afternoonNight: 10,
+      night: 10,
+    },
+  });
+
+  const placesOffer3 = await prisma.placesOffer.create({
+    data: {
+      idCourse: course1.id,
+      idAcademicPeriod: academicPeriod2.id,
+      entryModality: "DiplomaBearer",
+      morning: 10,
+      morningAfternoon: 5,
+      afternoon: 5,
+      afternoonNight: 10,
+      night: 10,
+    },
+  });
+
+  const placesOffer4 = await prisma.placesOffer.create({
+    data: {
+      idCourse: course2.id,
+      idAcademicPeriod: academicPeriod2.id,
+      entryModality: "InternalCourseTransfer",
+      morning: 10,
+      morningAfternoon: 10,
+      afternoon: 15,
+      afternoonNight: 15,
+      night: 5,
+    },
+  });
+
+  const placesOffer5 = await prisma.placesOffer.create({
+    data: {
+      idCourse: course2.id,
+      idAcademicPeriod: academicPeriod2.id,
+      entryModality: "InternalClassTimeTransfer",
+      morning: 15,
+      morningAfternoon: 15,
+      afternoon: 10,
+      afternoonNight: 10,
+      night: 10,
+    },
+  });
+
+  const placesOffer6 = await prisma.placesOffer.create({
+    data: {
+      idCourse: course2.id,
+      idAcademicPeriod: academicPeriod2.id,
+      entryModality: "DiplomaBearer",
+      morning: 10,
+      morningAfternoon: 5,
+      afternoon: 5,
+      afternoonNight: 10,
+      night: 10,
     },
   });
 }
