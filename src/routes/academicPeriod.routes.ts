@@ -6,7 +6,7 @@ import { verifyLoggedUser, } from "../middleware/verifyLoggedUser";
 const academicPeriodController = new AcademicPeriodController();
 const academicPeriodRoutes     = Router();
 
-academicPeriodRoutes.post("/", verifyAdministratorUser, academicPeriodController.createNextAcademicPeriod);
+academicPeriodRoutes.post("/proximo", verifyAdministratorUser, academicPeriodController.createNextAcademicPeriod);
 academicPeriodRoutes.post("/:idAcademicPeriod", verifyAdministratorUser, academicPeriodController.setActiveAcademicPeriod);
 academicPeriodRoutes.get("/", verifyAdministratorUser, academicPeriodController.readAll);
 academicPeriodRoutes.get("/ativo", verifyLoggedUser, academicPeriodController.readActiveAcademicPeriod);
