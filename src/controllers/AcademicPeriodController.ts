@@ -69,8 +69,6 @@ export class AcademicPeriodController
 
   public async readActiveAcademicPeriod(request: Request, response: Response)
   {
-    console.log("Teste");
-
     const activeAcademicPeriod = await prismaClient.academicPeriod.findFirst({
       where: { activePeriod: true, },
     });
