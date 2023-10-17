@@ -33,7 +33,7 @@ export type DocxTableData = {
 
 export class DocumentGeneratorUtil
 {
-  public static async generateDocxDocument(docxTableData: DocxTableData)
+  public static async generateDocxDocument(docxTableData: DocxTableData): Promise<string>
   {
     const title = new Paragraph({
       alignment: AlignmentType.CENTER,
@@ -481,11 +481,16 @@ export class DocumentGeneratorUtil
       ],
     });
 
-    const filename = DocumentGeneratorUtil.generateFilename(docxTableData);
-    const buffer   = await Packer.toBuffer(doc);
-    
+    const buffer = await Packer.toBuffer(doc);
+
+    const directory  = "src/documents";
+    const filename   = DocumentGeneratorUtil.generateFilename(docxTableData);
+    const pathToFile = `${directory}/${filename}`;
+
     if (!existsSync("src/documents")) mkdirSync("src/documents");
     writeFileSync(`src/documents/${filename}`, buffer);
+
+    return pathToFile;
   }
 
   private static generateFilename(docxTableData: DocxTableData)

@@ -16,9 +16,9 @@ export class DocumentGenerator
     const academicPeriodId = request.query["academic-period-id"] as string;
 
     const docxTableData = await DocumentGeneratorTransactions.getDocxTableData(entryModality, academicPeriodId);
-    await DocumentGeneratorUtil.generateDocxDocument(docxTableData);
+    const file          = await DocumentGeneratorUtil.generateDocxDocument(docxTableData);
 
-    return response.status(200).json({ docxTableData, });
+    return response.status(200).download(file);
   }
 }
 
