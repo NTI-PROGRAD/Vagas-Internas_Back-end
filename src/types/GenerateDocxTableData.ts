@@ -6,7 +6,7 @@ export type DocxTableData = {
   placesOffersWithConstraints: Array<{
     course: {
       name: string,
-      academicDegree: $Enums.academicDegree,
+      academicDegree: $Enums.AcademicDegree,
       campus: string,
     },
     morning: number,
