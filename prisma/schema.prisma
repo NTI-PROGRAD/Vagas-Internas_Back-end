@@ -24,7 +24,7 @@ enum Campus {
   Vitoria
 }
 
-enum academicDegree {
+enum AcademicDegree {
   Bacharelado
   Licenciatura
 }
@@ -109,7 +109,7 @@ model Course {
   id             String          @id @default(uuid())
   name           String
   campus         Campus
-  academicDegree academicDegree
+  academicDegree AcademicDegree
   classesTime    ClassesTime
   academicCenter AcademicCenters
 
