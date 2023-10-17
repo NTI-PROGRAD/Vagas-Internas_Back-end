@@ -1,4 +1,4 @@
-import { writeFileSync, } from "fs";
+import { writeFileSync, existsSync, mkdirSync, } from "fs";
 import { $Enums, } from "@prisma/client";
 
 import {
@@ -484,6 +484,7 @@ export class DocumentGeneratorUtil
     const filename = DocumentGeneratorUtil.generateFilename(docxTableData);
     const buffer   = await Packer.toBuffer(doc);
     
+    if (!existsSync("src/documents")) mkdirSync("src/documents");
     writeFileSync(`src/documents/${filename}`, buffer);
   }
 
