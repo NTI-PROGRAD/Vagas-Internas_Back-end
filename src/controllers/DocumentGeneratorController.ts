@@ -1,7 +1,8 @@
 import { Request, Response, } from "express";
 import { prismaClient, } from "../database/prismaClient";
 import { $Enums, } from "@prisma/client";
-import { DocumentGeneratorUtil, DocxTableData, } from "../util/DocumentGeneratorUtil";
+import { DocumentGeneratorUtil, } from "../util/DocumentGeneratorUtil";
+import { DocxTableData, } from "../types/GenerateDocxTableData";
 
 export class DocumentGenerator
 {
@@ -45,15 +46,14 @@ class DocumentGeneratorTransactions
         },
       });
 
-      const academicPeriod = await tx.academicPeriod.findFirst({
-        where: { id: idAcademicPeriod, },
-      });
-
-      return {
+      const academicPeriod = await tx.academicPeriod.findFirst({ where: { id: idAcademicPeriod, }, });
+      const docxTableData: DocxTableData = {
         academicPeriod: academicPeriod?.label ?? "",
         entryModality,
         placesOffersWithConstraints,
       };
+
+      return docxTableData;
     });
   }
 }

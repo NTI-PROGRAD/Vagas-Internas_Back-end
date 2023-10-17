@@ -1,5 +1,6 @@
 import { writeFileSync, existsSync, mkdirSync, } from "fs";
 import { $Enums, } from "@prisma/client";
+import { DocxTableData, } from "../types/GenerateDocxTableData";
 
 import {
   Document,
@@ -13,23 +14,6 @@ import {
   AlignmentType,
   SectionType,
 } from "docx";
-
-export type DocxTableData = {
-  academicPeriod: string,
-  entryModality: $Enums.EntryModality,
-  placesOffersWithConstraints: Array<{
-    course: {
-      name: string,
-      academicDegree: $Enums.academicDegree,
-      campus: string,
-    },
-    morning: number,
-    morningAfternoon: number,
-    afternoon: number,
-    afternoonNight: number,
-    night: number
-  }>
-}
 
 export class DocumentGeneratorUtil
 {
