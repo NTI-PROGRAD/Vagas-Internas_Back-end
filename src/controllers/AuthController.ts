@@ -1,16 +1,20 @@
-import { Response, } from "express";
+import { Request, Response, } from "express";
 import { AdministratorAccount, CourseAccount, } from "@prisma/client";
 import { compare, } from "bcrypt";
-import jwt from "jsonwebtoken";
+import jwt, { UserIdJwtPayload, JsonWebTokenError, } from "jsonwebtoken";
 import { prismaClient, } from "../database/prismaClient";
 import { NotFoundError, UnauthorizedError, } from "../helpers/api-errors";
 import { IAuthLoginRequest, } from "../interfaces/IAuthLoginRequest";
+import { AdministratorAccountRepository, } from "../repositories/AdministratorAccountRepositoty";
+import { CourseAccountRepository, } from "../repositories/CourseAccount.repository";
 
 export class AuthController
 {
   constructor()
   {
     this.login = this.login.bind(this);
+    this.isAuthenticated = this.isAuthenticated.bind(this);
+
     this.getAdministratorAccount = this.getAdministratorAccount.bind(this);
     this.getCourseAccount = this.getCourseAccount.bind(this);
     this.validAdministratorAccountAuthentication = this.validAdministratorAccountAuthentication.bind(this);
@@ -41,6 +45,31 @@ export class AuthController
     }
 
     throw new NotFoundError("Usuário ou senha incorretos!");
+  }
+
+  public async isAuthenticated(request: Request, response: Response)
+  {
+    let authenticated  = false;
+    const jwtSecretKey = process.env.JWT_SECRET_KEY as string;
+    const token        = request.body?.token as string;
+
+    try
+    {
+      const { userId, } = <UserIdJwtPayload>jwt.verify(token ?? "", jwtSecretKey);
+
+      if (await AdministratorAccountRepository.findById(userId))
+        authenticated = true;
+
+      if (await CourseAccountRepository.findById(userId))
+        authenticated = (await CourseAccountRepository.hasGrantedTimeById(userId)) ? true : false;
+
+      if (authenticated) return response.status(200).json({ validAuthentication: true, });
+      else               return response.status(404).json({ validAuthentication: false, });
+    }
+    catch(error)
+    {
+      return response.status(400).json({ validAuthentication: false, });
+    }
   }
 
   private async getAdministratorAccount(login: string): Promise<AdministratorAccount | null>
