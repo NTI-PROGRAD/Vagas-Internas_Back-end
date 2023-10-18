@@ -63,12 +63,23 @@ export class AuthController
       if (await CourseAccountRepository.findById(userId))
         authenticated = (await CourseAccountRepository.hasGrantedTimeById(userId)) ? true : false;
 
-      if (authenticated) return response.status(200).json({ validAuthentication: true, });
-      else               return response.status(404).json({ validAuthentication: false, });
+      if (authenticated)
+        return response.status(200).json({
+          message: "O usuário informado está devidamente autenticado.",
+          validAuthentication: true,
+        });
+      else 
+        return response.status(404).json({
+          message: "O usuário não foi encontrado ou o prazo de acesso do usuário expirou!",
+          validAuthentication: false,
+        });
     }
     catch(error)
     {
-      return response.status(400).json({ validAuthentication: false, });
+      return response.status(400).json({
+        message: "O token informado pelo usuário é inválido!",
+        validAuthentication: false,
+      });
     }
   }
 
