@@ -5,6 +5,6 @@ const authController       = new AuthController();
 const authenticationRoutes = Router();
 
 authenticationRoutes.post("/login", authController.login);
-authenticationRoutes.get("/isAuthenticated", authController.isAuthenticated);
+authenticationRoutes.post("/isAuthenticated", authController.isAuthenticated);
 
 export { authenticationRoutes, };

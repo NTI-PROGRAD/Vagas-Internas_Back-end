@@ -14,7 +14,6 @@ export class AuthController
   {
     this.login = this.login.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-
     this.getAdministratorAccount = this.getAdministratorAccount.bind(this);
     this.getCourseAccount = this.getCourseAccount.bind(this);
     this.validAdministratorAccountAuthentication = this.validAdministratorAccountAuthentication.bind(this);
