@@ -1,7 +1,7 @@
 import { Request, Response, } from "express";
 import { AdministratorAccount, CourseAccount, } from "@prisma/client";
 import { compare, } from "bcrypt";
-import jwt, { UserIdJwtPayload, JsonWebTokenError, } from "jsonwebtoken";
+import jwt, { UserIdJwtPayload, } from "jsonwebtoken";
 import { prismaClient, } from "../database/prismaClient";
 import { NotFoundError, UnauthorizedError, } from "../helpers/api-errors";
 import { IAuthLoginRequest, } from "../interfaces/IAuthLoginRequest";
