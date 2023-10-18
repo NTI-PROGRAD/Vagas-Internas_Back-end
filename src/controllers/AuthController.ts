@@ -126,6 +126,6 @@ export class AuthController
 
   private isWithinDeadline(endTime: Date): boolean
   {
-    return (new Date().getTime() <= endTime.getTime());
+    return (new Date() <= endTime);
   }
 }
