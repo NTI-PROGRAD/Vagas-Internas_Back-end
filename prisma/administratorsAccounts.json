@@ -1,0 +1,27 @@
+[
+  {
+    "login": "emily",
+    "password": "12345",
+    "email": "emily.pires@ufpe.br"
+  },
+  {
+    "login": "rafael",
+    "password": "12345",
+    "email": "rafael.anthony@ufpe.br"
+  },
+  {
+    "login": "cecilia",
+    "password": "12345",
+    "email": "cecilia.drummond@ufpe.br"
+  },
+  {
+    "login": "francisco",
+    "password": "12345",
+    "email": "francisco.barros@ufpe.br"
+  },
+  {
+    "login": "leonardo",
+    "password": "12345",
+    "email": "leonardo.fogaca@ufpe.br"
+  }
+]

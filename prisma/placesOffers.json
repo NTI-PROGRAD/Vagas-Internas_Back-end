@@ -1,0 +1,626 @@
+[
+  {
+    "name": "Interdisciplinar em Ciência e Tecnologia",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA"
+  },
+  {
+    "name": "Ciências Econômicas",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA"
+  },
+  {
+    "name": "Comunicação Social",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA"
+  },
+  {
+    "name": "Design",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA"
+  },
+  {
+    "name": "Engenharia Civil",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA"
+  },
+  {
+    "name": "Engenharia de Produção",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA"
+  },
+  {
+    "name": "Física",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA"
+  },
+  {
+    "name": "Intercultural Indígena",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA"
+  },
+  {
+    "name": "Matemática",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA"
+  },
+  {
+    "name": "Medicina",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA"
+  },
+  {
+    "name": "Pedagogia",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA"
+  },
+  {
+    "name": "Química",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA"
+  },
+  {
+    "name": "Administração",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Arqueologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Arquitetura e Urbanismo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Artes Visuais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Artes Visuais",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Biblioteconomia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Biomedicina",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CB"
+  },
+  {
+    "name": "Ciência Política",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Ciências Atuariais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Ciências Biológicas",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CB"
+  },
+  {
+    "name": "Ciências Biológicas",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CB"
+  },
+  {
+    "name": "Ciências Biológicas com Enfâse em Ciênciais Ambientais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CB"
+  },
+  {
+    "name": "Ciências Contábeis",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Ciência da Computação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CIn"
+  },
+  {
+    "name": "Ciências Econômicas",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Ciências Sociais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Ciências Sociais",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Cinema e Audiovisual",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Dança",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Design",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Direito",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCJ"
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCS"
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Enfermagem",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Engenharia Biomédica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia Cartográfica e de Agrimensura",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia Civil",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia da Computação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CIn"
+  },
+  {
+    "name": "Engenharia de Alimentos",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia de Controle e Automação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia de Energia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia de Materiais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia de Minas",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia de Produção",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia Elétrica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia Eletrônica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia Mecânica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia Naval",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia Química",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Engenharia de Telecomunicações",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Estatística",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN"
+  },
+  {
+    "name": "Expressão Gráfica",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Farmácia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Filosofia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Filosofia",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Física",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN"
+  },
+  {
+    "name": "Física",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCEN"
+  },
+  {
+    "name": "Fisioterapia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Fonoaudiologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Geografia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Geografia",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Geologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Gestão da Informação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "História",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "História",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Hotelaria",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Jornalismo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Letras",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Letras Espanhol",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Letras Francês",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Letras Inglês",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Letras Libras",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Letras Português",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Matemática",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN"
+  },
+  {
+    "name": "Matemática",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCEN"
+  },
+  {
+    "name": "Medicina",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCM"
+  },
+  {
+    "name": "Museologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Música",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Música Canto",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Música Instrumento",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Nutrição",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Oceanografia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Odontologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Pedagogia",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CE"
+  },
+  {
+    "name": "Psicologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH"
+  },
+  {
+    "name": "Publicidade e Propaganda",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Química",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN"
+  },
+  {
+    "name": "Química",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCEN"
+  },
+  {
+    "name": "Química Industrial",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG"
+  },
+  {
+    "name": "Radio, TV e Internet",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC"
+  },
+  {
+    "name": "Secretariado Executivo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Serviço Social",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Sistemas de Informação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CIn"
+  },
+  {
+    "name": "Teatro",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC"
+  },
+  {
+    "name": "Terapia Ocupacional",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS"
+  },
+  {
+    "name": "Turismo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA"
+  },
+  {
+    "name": "Ciências Biológicas",
+    "campus": "Vitoria",
+    "academicDegree": "Licenciatura",
+    "centre": "CAV"
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV"
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Vitoria",
+    "academicDegree": "Licenciatura",
+    "centre": "CAV"
+  },
+  {
+    "name": "Enfermagem",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV"
+  },
+  {
+    "name": "Nutrição",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV"
+  },
+  {
+    "name": "Saúde Coletiva",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV"
+  }
+]

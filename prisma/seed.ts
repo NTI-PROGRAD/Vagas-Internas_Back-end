@@ -1,271 +1,181 @@
-import { PrismaClient, } from "@prisma/client";
+import { PrismaClient, academicDegree, Campus, AcademicCenters, EntryModality, } from "@prisma/client";
 import bcrypt from "bcrypt";
+import fs from "fs";
 
 const prisma = new PrismaClient();
 
+function generateRandomNumber(minimum: number, maximum: number): number
+{
+  return Math.floor(Math.random() * (maximum - minimum + 1) + minimum);
+}
+
+async function getCourseIdByCourseName(courseName: string): Promise<string>
+{
+  const course = await prisma.course.findFirst({ where: { name: courseName, }, });
+  return (course) ? course.id : "";
+}
+
+async function getFirstAdministratorAccount(): Promise<string>
+{
+  const administratorsAccounts = await prisma.administratorAccount.findMany({});
+  return administratorsAccounts[0].id;
+}
+
+async function insertAdministratorsAccountsFromJson()
+{
+  type AdministratorAccount = {
+    login: string,
+    password: string,
+    email: string
+  };
+
+  const administratorsAccounts: Array<AdministratorAccount> = JSON.parse(fs.readFileSync("prisma/administratorsAccounts.json", { encoding: "utf-8", }));
+
+  for (const administratorAccount of administratorsAccounts)
+  {
+    await prisma.administratorAccount.create({
+      data: {
+        login: administratorAccount.login,
+        password: await bcrypt.hash(administratorAccount.password, 10),
+        email: administratorAccount.email,
+      },
+    });
+  }
+}
+
+async function insertCoursesAndCoursesAccountsFromJson()
+{
+  type Course = {
+    name: string,
+    campus: Campus,
+    academicDegree: academicDegree,
+    centre: AcademicCenters,
+    courseAccount: {
+      login: string,
+      password: string
+    }
+  };
+
+  const coursesAccounts: Array<Course> = JSON.parse(fs.readFileSync("prisma/courses.json", { encoding: "utf-8", }));
+
+  for (const course of coursesAccounts)
+  {
+    const createdCourse = await prisma.course.create({
+      data: {
+        name: course.name,
+        classesTime: "Matutino_Vespertino",
+        campus: course.campus,
+        academicDegree: course.academicDegree,
+        academicCenter: course.centre,
+      },
+    });
+
+    await prisma.courseAccount.create({
+      data: {
+        login: course.courseAccount.login,
+        password: await bcrypt.hash(course.courseAccount.password, 10),
+        email: "",
+        idCourse: createdCourse.id,
+      },
+    });
+  }
+}
+
+async function insertAcademicPeriodsFromJson(idAdministratorAccount: string): Promise<void>
+{
+  type academicPeriod = {
+    label: string,
+    activePeriod: boolean
+  };
+
+  const academicPeriods: Array<academicPeriod> = JSON.parse(fs.readFileSync("prisma/academicPeriods.json", { encoding: "utf-8", }));
+
+  for (const academicPeriod of academicPeriods)
+  {
+    await prisma.academicPeriod.create({
+      data: {
+        idAdministratorAccount,
+        label: academicPeriod.label,
+        activePeriod: academicPeriod.activePeriod,
+      },
+    });
+  }
+}
+
+async function generatePlacesOffersFromJson(): Promise<void>
+{
+  type CourseInfo = {
+    name: string,
+    campus: Campus,
+    academicDegree: academicDegree,
+    centre: AcademicCenters,
+  };
+
+  const entryModalities = [
+    "InternalCourseTransfer",
+    "InternalClassTimeTransfer",
+    "ExternalTransfer",
+    "DiplomaBearer",
+  ];
+  const coursesInfo: Array<CourseInfo> = JSON.parse(fs.readFileSync("prisma/placesOffers.json", { encoding: "utf-8", }));
+  
+  for (const courseInfo of coursesInfo)
+  {
+    const course = await prisma.course.findFirst({
+      where: {
+        name: courseInfo.name,
+        campus: courseInfo.campus,
+        academicDegree: courseInfo.academicDegree,
+      },
+    });
+
+    const activeAcademicPeriod = await prisma.academicPeriod.findFirst({
+      where: {
+        activePeriod: true,
+      },
+    });
+
+    const morning          = generateRandomNumber(0, 5);
+    const morningAfternoon = generateRandomNumber(0, 5);
+    const afternoon        = generateRandomNumber(0, 5);
+    const afternoonNight   = generateRandomNumber(0, 5);
+    const night            = generateRandomNumber(0, 5);
+
+    if (course && activeAcademicPeriod)
+    {
+      await prisma.placesOffer.create({
+        data: {
+          idCourse: course?.id,
+          idAcademicPeriod: activeAcademicPeriod?.id,
+          morning,
+          morningAfternoon,
+          afternoon,
+          afternoonNight,
+          night,
+          entryModality: entryModalities[generateRandomNumber(0, 3)] as EntryModality,
+        },
+      });
+    }
+  }
+}
+
 async function main()
 {
+  // Apaga registros do banco de dados
   await prisma.placesOffer.deleteMany({});
   await prisma.courseAccountGetGrantedTime.deleteMany({});
-
   await prisma.grantedTime.deleteMany({});
   await prisma.courseAccount.deleteMany({});
   await prisma.course.deleteMany({});
   await prisma.academicPeriod.deleteMany({});
   await prisma.administratorAccount.deleteMany({});
 
-  const administratorAccount1 = await prisma.administratorAccount.create({
-    data: {
-      login: "emily",
-      password: await bcrypt.hash("12345", 10),
-      email: "emily.pires@ufpe.br",
-    },
-  });
-
-  const administratorAccount2 = await prisma.administratorAccount.create({
-    data: {
-      login: "rafael",
-      password: await bcrypt.hash("12345", 10),
-      email: "rafael.anthony@ufpe.br",
-    },
-  });
-
-  const administratorAccount3 = await prisma.administratorAccount.create({
-    data: {
-      login: "cecilia",
-      password: await bcrypt.hash("12345", 10),
-      email: "cecilia.drumond@ufpe.br",
-    },
-  });
-
-  const administratorAccount4 = await prisma.administratorAccount.create({
-    data: {
-      login: "francisco",
-      password: await bcrypt.hash("12345", 10),
-      email: "francisco.barros@ufpe.br",
-    },
-  });
-
-  const administratorAccount5 = await prisma.administratorAccount.create({
-    data: {
-      login: "leonardo",
-      password: await bcrypt.hash("12345", 10),
-      email: "leonardo.fogaca@ufpe.br",
-    },
-  });
-
-  const course1 = await prisma.course.create({
-    data: {
-      name: "Administração",
-      classesTime: "Matutino_Vespertino",
-      campus: "Recife",
-      academicDegree: "Bacharelado",
-      academicCenter: "CCSA",
-    },
-  });
-
-  const course2 = await prisma.course.create({
-    data: {
-      name: "Arqueologia",
-      classesTime: "Matutino_Vespertino",
-      campus: "Recife",
-      academicDegree: "Bacharelado",
-      academicCenter: "CFCH",
-    },
-  });
-
-  const course3 = await prisma.course.create({
-    data: {
-      name: "Arquitetura e Urbanismo",
-      classesTime: "Matutino_Vespertino",
-      campus: "Recife",
-      academicDegree: "Bacharelado",
-      academicCenter: "CAC",
-    },
-  });
-
-  const course4 = await prisma.course.create({
-    data: {
-      name: "Artes Visuais",
-      classesTime: "Matutino_Vespertino",
-      campus: "Recife",
-      academicDegree: "Bacharelado",
-      academicCenter: "CAC",
-    },
-  });
-
-  const course5 = await prisma.course.create({
-    data: {
-      name: "Artes Visuais",
-      classesTime: "Matutino_Vespertino",
-      campus: "Recife",
-      academicDegree: "Licenciatura",
-      academicCenter: "CAC",
-    },
-  });
-
-  const courseAccount1 = await prisma.courseAccount.create({
-    data: {
-      login: "administracao_bacharelado_recife",
-      password: await bcrypt.hash("12345", 10),
-      email: "coord.administracao@ufpe.br",
-      idCourse: course1.id,
-    },
-  });
-  
-  const courseAccount2 = await prisma.courseAccount.create({
-    data: {
-      login: "arqueologia_bacharelado_recife",
-      password: await bcrypt.hash("12345", 10),
-      email: "coord.arqueologia@ufpe.br",
-      idCourse: course2.id,
-    },
-  });
-  
-  const courseAccount3 = await prisma.courseAccount.create({
-    data: {
-      login: "arquitetura_e_urbanismo_bacharelado_recife",
-      password: await bcrypt.hash("12345", 10),
-      email: "coord.arquiteturaurbanismo@ufpe.br",
-      idCourse: course3.id,
-    },
-  });
-
-  const courseAccount4 = await prisma.courseAccount.create({
-    data: {
-      login: "artes_visuais_bacharelado_recife",
-      password: await bcrypt.hash("12345", 10),
-      email: "coord.artesvisuais@ufpe.br",
-      idCourse: course4.id,
-    },
-  });
-
-  const courseAccount5 = await prisma.courseAccount.create({
-    data: {
-      login: "artes_visuais_licenciatura_recife",
-      password: await bcrypt.hash("12345", 10),
-      email: "coord.artesvisuais@ufpe.br",
-      idCourse: course5.id,
-    },
-  });
-
-  const academicPeriod1 = await prisma.academicPeriod.create({
-    data: {
-      idAdministratorAccount: administratorAccount1.id,
-      label: "2023.2",
-      activePeriod: false,
-    },
-  });
-  
-  const academicPeriod2 = await prisma.academicPeriod.create({
-    data: {
-      idAdministratorAccount: administratorAccount1.id,
-      label: "2024.1",
-      activePeriod: true,
-    },
-  });
-
-  const academicPeriod3 = await prisma.academicPeriod.create({
-    data: {
-      idAdministratorAccount: administratorAccount1.id,
-      label: "2024.2",
-      activePeriod: false,
-    },
-  });
-
-  const academicPeriod4 = await prisma.academicPeriod.create({
-    data: {
-      idAdministratorAccount: administratorAccount1.id,
-      label: "2025.1",
-      activePeriod: false,
-    },
-  });
-
-  const academicPeriod5 = await prisma.academicPeriod.create({
-    data: {
-      idAdministratorAccount: administratorAccount1.id,
-      label: "2025.2",
-      activePeriod: false,
-    },
-  });
-
-  const placesOffer1 = await prisma.placesOffer.create({
-    data: {
-      idCourse: course1.id,
-      idAcademicPeriod: academicPeriod2.id,
-      entryModality: "InternalCourseTransfer",
-      morning: 10,
-      morningAfternoon: 10,
-      afternoon: 15,
-      afternoonNight: 15,
-      night: 5,
-    },
-  });
-
-  const placesOffer2 = await prisma.placesOffer.create({
-    data: {
-      idCourse: course1.id,
-      idAcademicPeriod: academicPeriod2.id,
-      entryModality: "InternalClassTimeTransfer",
-      morning: 5,
-      morningAfternoon: 5,
-      afternoon: 10,
-      afternoonNight: 10,
-      night: 10,
-    },
-  });
-
-  const placesOffer3 = await prisma.placesOffer.create({
-    data: {
-      idCourse: course1.id,
-      idAcademicPeriod: academicPeriod2.id,
-      entryModality: "DiplomaBearer",
-      morning: 10,
-      morningAfternoon: 5,
-      afternoon: 5,
-      afternoonNight: 10,
-      night: 10,
-    },
-  });
-
-  const placesOffer4 = await prisma.placesOffer.create({
-    data: {
-      idCourse: course2.id,
-      idAcademicPeriod: academicPeriod2.id,
-      entryModality: "InternalCourseTransfer",
-      morning: 10,
-      morningAfternoon: 10,
-      afternoon: 15,
-      afternoonNight: 15,
-      night: 5,
-    },
-  });
-
-  const placesOffer5 = await prisma.placesOffer.create({
-    data: {
-      idCourse: course2.id,
-      idAcademicPeriod: academicPeriod2.id,
-      entryModality: "InternalClassTimeTransfer",
-      morning: 15,
-      morningAfternoon: 15,
-      afternoon: 10,
-      afternoonNight: 10,
-      night: 10,
-    },
-  });
-
-  const placesOffer6 = await prisma.placesOffer.create({
-    data: {
-      idCourse: course2.id,
-      idAcademicPeriod: academicPeriod2.id,
-      entryModality: "DiplomaBearer",
-      morning: 10,
-      morningAfternoon: 5,
-      afternoon: 5,
-      afternoonNight: 10,
-      night: 10,
-    },
-  });
+  // Semeia banco de dados
+  await insertAdministratorsAccountsFromJson();
+  await insertCoursesAndCoursesAccountsFromJson();
+  const firstAdministratorAccountId = await getFirstAdministratorAccount();
+  await insertAcademicPeriodsFromJson(firstAdministratorAccountId);
+  await generatePlacesOffersFromJson();
 }
 
 main()

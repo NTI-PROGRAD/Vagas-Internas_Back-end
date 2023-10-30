@@ -1,0 +1,1042 @@
+[
+  {
+    "name": "Interdisciplinar em Ciência e Tecnologia",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "bacharelado-interdisciplinar-em-ciencia-e-tecnologia-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Econômicas",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "bacharelado-ciencias-economicas-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Comunicação Social",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "bacharelado-comunicacao-social-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Design",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "bacharelado-design-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Civil",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-civil-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Produção",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-producao-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Física",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "licenciatura-fisica-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Intercultural Indígena",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "licenciatura-intercultural-indigena-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Matemática",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "licenciatura-matematica-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Medicina",
+    "campus": "Caruaru",
+    "academicDegree": "Bacharelado",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "bacharelado-medicina-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Pedagogia",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "licenciatura-pedagogia-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Química",
+    "campus": "Caruaru",
+    "academicDegree": "Licenciatura",
+    "centre": "CAA",
+    "courseAccount": {
+      "login": "licenciatura-quimica-caruaru",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Administração",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-administracao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Arqueologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-arqueologia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Arquitetura e Urbanismo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-arquitetura-e-urbanismo-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Artes Visuais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-artes-visuais-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Artes Visuais",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-artes-visuais-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Biblioteconomia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-biblioteconomia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Biomedicina",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CB",
+    "courseAccount": {
+      "login": "bacharelado-biomedicina-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciência Política",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-ciencia-politica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Atuariais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-ciencias-atuariais-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Biológicas",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CB",
+    "courseAccount": {
+      "login": "bacharelado-ciencias-biologicas-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Biológicas",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CB",
+    "courseAccount": {
+      "login": "licenciatura-ciencias-biologicas-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Biológicas com Enfâse em Ciênciais Ambientais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CB",
+    "courseAccount": {
+      "login": "bacharelado-ciencias-biologicas-com-enfase-em-ciencias-ambientais-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Contábeis",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-ciencias-contabeis-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciência da Computação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CIn",
+    "courseAccount": {
+      "login": "bacharelado-ciencia-da-computacao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Econômicas",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-ciencias-economicas-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Sociais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-ciencias-sociais-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Sociais",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "licenciatura-ciencias-sociais-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Cinema e Audiovisual",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-cinema-e-audiovisual-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Dança",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-danca-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Design",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-design-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Direito",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCJ",
+    "courseAccount": {
+      "login": "bacharelado-direito-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "licenciatura-educacao-fisica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-educacao-fisica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Enfermagem",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-enfermagem-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Biomédica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-biomedica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Cartográfica e de Agrimensura",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-cartografica-e-de-agrimensura-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Civil",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-civil-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia da Computação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CIn",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-da-computacao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Alimentos",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-alimentos-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Controle e Automação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-controle-e-automacao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Energia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-energia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Materiais",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-materiais-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Minas",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-minas-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Produção",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-producao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Elétrica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-eletrica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Eletrônica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-eletronica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Mecânica",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-mecanica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Naval",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-naval-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia Química",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-quimica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Engenharia de Telecomunicações",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-engenharia-de-telecomunicacoes-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Estatística",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN",
+    "courseAccount": {
+      "login": "bacharelado-estatistica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Expressão Gráfica",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-expressao-grafica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Farmácia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-farmacia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Filosofia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-filosofia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Filosofia",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "licenciatura-filosofia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Física",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN",
+    "courseAccount": {
+      "login": "bacharelado-fisica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Física",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCEN",
+    "courseAccount": {
+      "login": "licenciatura-fisica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Fisioterapia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-fisioterapia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Fonoaudiologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-fonoaudiologia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Geografia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-geografia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Geografia",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "licenciatura-geografia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Geologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-geologia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Gestão da Informação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-gestao-da-informacao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "História",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-historia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "História",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "licenciatura-historia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Hotelaria",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-hotelaria-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Jornalismo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-jornalismo-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Letras",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-letras-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Letras Espanhol",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-letras-espanhol-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Letras Francês",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-letras-frances-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Letras Inglês",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-letras-ingles-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Letras Libras",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-letras-libras-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Letras Português",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-letras-portugues-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Matemática",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN",
+    "courseAccount": {
+      "login": "bacharelado-matematica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Matemática",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCEN",
+    "courseAccount": {
+      "login": "licenciatura-matematica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Medicina",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCM",
+    "courseAccount": {
+      "login": "bacharelado-medicina-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Museologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-museologia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Música",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-musica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Música Canto",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-musica-canto-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Música Instrumento",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-musica-instrumento-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Nutrição",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-nutricao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Oceanografia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-oceanografia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Odontologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-odontologia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Pedagogia",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CE",
+    "courseAccount": {
+      "login": "licenciatura-pedagogia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Psicologia",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CFCH",
+    "courseAccount": {
+      "login": "bacharelado-psicologia-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Publicidade e Propaganda",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-publicidade-e-propaganda-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Química",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCEN",
+    "courseAccount": {
+      "login": "bacharelado-quimica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Química",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CCEN",
+    "courseAccount": {
+      "login": "licenciatura-quimica-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Química Industrial",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CTG",
+    "courseAccount": {
+      "login": "bacharelado-quimica-industrial-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Radio, TV e Internet",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "bacharelado-radio-tv-e-internet-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Secretariado Executivo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-secretariado-executivo-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Serviço Social",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-servico-social-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Sistemas de Informação",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CIn",
+    "courseAccount": {
+      "login": "bacharelado-sistemas-de-informacao-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Teatro",
+    "campus": "Recife",
+    "academicDegree": "Licenciatura",
+    "centre": "CAC",
+    "courseAccount": {
+      "login": "licenciatura-teatro-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Terapia Ocupacional",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCS",
+    "courseAccount": {
+      "login": "bacharelado-terapia-ocupacional-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Turismo",
+    "campus": "Recife",
+    "academicDegree": "Bacharelado",
+    "centre": "CCSA",
+    "courseAccount": {
+      "login": "bacharelado-turismo-recife",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Ciências Biológicas",
+    "campus": "Vitoria",
+    "academicDegree": "Licenciatura",
+    "centre": "CAV",
+    "courseAccount": {
+      "login": "licenciatura-ciencias-biologicas-vitoria",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV",
+    "courseAccount": {
+      "login": "bacharelado-educacao-fisica-vitoria",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Educação Física",
+    "campus": "Vitoria",
+    "academicDegree": "Licenciatura",
+    "centre": "CAV",
+    "courseAccount": {
+      "login": "licenciatura-educacao-fisica-vitoria",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Enfermagem",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV",
+    "courseAccount": {
+      "login": "bacharelado-enfermagem-vitoria",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Nutrição",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV",
+    "courseAccount": {
+      "login": "bacharelado-nutricao-vitoria",
+      "password": "12345"
+    }
+  },
+  {
+    "name": "Saúde Coletiva",
+    "campus": "Vitoria",
+    "academicDegree": "Bacharelado",
+    "centre": "CAV",
+    "courseAccount": {
+      "login": "bacharelado-saude-coletiva-vitoria",
+      "password": "12345"
+    }
+  }
+]

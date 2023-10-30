@@ -1,0 +1,22 @@
+[
+  {
+    "label": "2023.2",
+    "activePeriod": false
+  },
+  {
+    "label": "2024.1",
+    "activePeriod": true
+  },
+  {
+    "label": "2024.2",
+    "activePeriod": false
+  },
+  {
+    "label": "2025.1",
+    "activePeriod": false
+  },
+  {
+    "label": "2025.2",
+    "activePeriod": false
+  }
+]
